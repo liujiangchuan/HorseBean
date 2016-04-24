@@ -1,0 +1,109 @@
+apply plugin: 'com.android.application'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "com.ll.horsebean"
+        minSdkVersion 11
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+
+    productFlavors {
+        bydefault {
+            manifestPlaceholders = [CHANNEL: properties.getProperty("CHANNEL_BYDEFAULT")]
+        }
+        baidu {
+            manifestPlaceholders = [CHANNEL: properties.getProperty("CHANNEL_BAIDU")]
+            applicationId "com.example.administrator.myapplication5"
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('./keyStore.jks')
+            storePassword '123456'
+            keyAlias 'keyStore'
+            keyPassword '123456'
+        }
+        relealse {
+            storeFile file('D:/Doc/package/asKeyStore/keyStore.jks')
+            storePassword properties.getProperty("KEY_PASSWORD")
+            keyAlias properties.getProperty("KEY_ALIAS")
+            keyPassword properties.getProperty("KEY_PASSWORD")
+        }
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            versionNameSuffix "-debug"
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+
+            manifestPlaceholders = [FLOG_DEBUG            : true,
+                                    FLOG_DEBUG_LEVEL      : 2,
+                                    FLOG_OUT_TO_FILE      : true,
+                                    FLOG_OUT_TO_FILE_LEVEL: 5,
+                                    CRASH_CATCH           : false,
+                                    STRICT_MODE           : true,
+                                    LEAK_CANARY           : true]
+        }
+        release {
+            //not show log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            //confusion
+            minifyEnabled true
+            //Zipalign optimization
+            zipAlignEnabled true
+            // remove unused resource files
+            shrinkResources true
+            // load default confusion file progudard-android.txt is in sdk path, proguard.cfg is our own confusion file.
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //sign
+            signingConfig signingConfigs.relealse
+
+            manifestPlaceholders = [FLOG_DEBUG            : false,
+                                    FLOG_DEBUG_LEVEL      : 2,
+                                    FLOG_OUT_TO_FILE      : false,
+                                    FLOG_OUT_TO_FILE_LEVEL: 5,
+                                    CRASH_CATCH           : false,
+                                    STRICT_MODE           : false,
+                                    LEAK_CANARY           : false]
+        }
+        applicationVariants.all { variant ->
+            variant.outputs.each { output ->
+                def outputFile = output.outputFile
+                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                    def fileName = "horsebean_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+                    output.outputFile = new File(outputFile.parent, fileName)
+                }
+            }
+        }
+    }
+
+    dexOptions { javaMaxHeapSize "4g" }
+
+    lintOptions { abortOnError false }
+
+    repositories {
+        flatDir {
+            dirs '../services/libs'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile project(':services')
+}

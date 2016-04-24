@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.ll.horsebean"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/FBaseAppTheme">
+
+        <activity
+            android:name=".module.main.activity.MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".module.database.DatabaseActivity"/>
+        <activity android:name=".module.glide.GlideActivity"/>
+        <activity android:name=".module.http.HttpActivity"/>
+
+        <meta-data
+            android:name="CHANNEL"
+            android:value="${CHANNEL}"/>
+        <meta-data
+            android:name="FLOG_DEBUG"
+            android:value="${FLOG_DEBUG}"/>
+        <meta-data
+            android:name="FLOG_DEBUG_LEVEL"
+            android:value="${FLOG_DEBUG_LEVEL}"/>
+        <meta-data
+            android:name="FLOG_OUT_TO_FILE"
+            android:value="${FLOG_OUT_TO_FILE}"/>
+        <meta-data
+            android:name="FLOG_OUT_TO_FILE_LEVEL"
+            android:value="${FLOG_OUT_TO_FILE_LEVEL}"/>
+        <meta-data
+            android:name="CRASH_CATCH"
+            android:value="${CRASH_CATCH}"/>
+        <meta-data
+            android:name="STRICT_MODE"
+            android:value="${STRICT_MODE}"/>
+        <meta-data
+            android:name="LEAK_CANARY"
+            android:value="${LEAK_CANARY}"/>
+    </application>
+
+</manifest>

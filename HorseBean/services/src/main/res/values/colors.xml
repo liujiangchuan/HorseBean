@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- title bar -->
+    <color name="f_titlebar_text">@android:color/white</color>
+    <color name="f_titlebar_btn_text">@android:color/white</color>
+    <color name="f_titlebar_bg">#2ABFFF</color>
+
+    <!-- common -->
+    <color name="f_transparent_1a">#1a000000</color>
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <EditText
+        android:id="@+id/database_input"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hello_world" />
+
+    <TextView
+        android:id="@+id/database_add"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:text="add" />
+
+    <TextView
+        android:id="@+id/database_output"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/database_input"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/database_show"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/database_add"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="show" />
+
+</RelativeLayout>

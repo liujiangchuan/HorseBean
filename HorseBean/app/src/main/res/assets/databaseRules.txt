@@ -1,0 +1,43 @@
+{
+    "engineVersion": "1",
+    "steps": [
+        {
+            "oldVersion": "1",
+            "newVersion": "2",
+            "newFields": [
+                {
+                    "tableName": "systembookmark",
+                    "fieldName": "BOOK_LEVEL",
+                    "type": "TEXT",
+                    "defaultValue": "1"
+            	},
+            	{
+                    "tableName": "shelfbookmark",
+                    "fieldName": "BOOK_LEVEL",
+                    "type": "TEXT",
+                    "defaultValue": "1"
+            	}
+            ],
+            "hasNewTable": "false"
+        },
+        {
+            "oldVersion": "2",
+            "newVersion": "3",
+            "newFields": [
+                {
+                    "tableName": "systembookmark",
+                    "fieldName": "BOOK_COVER",
+                    "type": "TEXT",
+                    "defaultValue": ""
+            	},
+            	{
+                    "tableName": "shelfbookmark",
+                    "fieldName": "BOOK_COVER",
+                    "type": "TEXT",
+                    "defaultValue": ""
+            	}
+            ],
+            "hasNewTable": "false"
+        }
+    ]
+}

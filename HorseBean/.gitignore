@@ -1,0 +1,13 @@
+bin/
+gen/
+.gradle/
+.idea/
+build/
+gradle/
+
+local.properties
+gradle.properties
+gradlew
+gradlew.bat
+
+*.iml

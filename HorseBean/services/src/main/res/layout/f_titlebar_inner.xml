@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/f_titlebar_left1"
+        android:layout_width="@dimen/f_titlebar_btn_width"
+        android:layout_height="match_parent"
+        android:background="@drawable/f_selector_transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/f_titlebar_back"/>
+
+    <TextView
+        android:id="@+id/f_titlebar_text"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:ellipsize="marquee"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="@color/f_titlebar_text"
+        android:textSize="@dimen/h2"
+        tools:text="title"/>
+
+    <TextView
+        android:id="@+id/f_titlebar_right1"
+        android:layout_width="@dimen/f_titlebar_btn_width"
+        android:layout_height="match_parent"
+        android:background="@drawable/f_selector_transparent"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="@color/f_titlebar_btn_text"
+        android:textSize="@dimen/h5"
+        android:visibility="invisible"
+        tools:text="按钮"
+        tools:visibility="visible"/>
+</merge>
