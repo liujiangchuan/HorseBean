@@ -6,6 +6,10 @@ import android.net.NetworkInfo;
 
 import com.ll.services.FApplication;
 
+/**
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
+ */
 public class FNetUtil
 {
     public static boolean isConnected()

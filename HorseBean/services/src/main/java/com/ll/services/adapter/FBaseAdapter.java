@@ -7,7 +7,8 @@ import android.widget.BaseAdapter;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016/4/22.
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
  */
 public abstract class FBaseAdapter<T> extends BaseAdapter
 {

@@ -4,6 +4,10 @@ import android.widget.Toast;
 
 import com.ll.services.FApplication;
 
+/**
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
+ */
 public class FToast
 {
     public static void showShort(CharSequence text)

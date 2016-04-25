@@ -6,9 +6,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ll.horsebean.R;
-import com.ll.horsebean.module.http.HttpActivity;
-import com.ll.services.activity.FBaseActivity;
 import com.ll.services.helper.FToast;
+import com.ll.services.ui.FBaseActivity;
+import com.ll.services.ui.FWebViewIntent;
 import com.ll.services.view.titlebar.IFTitlebar;
 
 import butterknife.Bind;
@@ -18,9 +18,9 @@ public class MainActivity extends FBaseActivity
 {
     @Bind(R.id.textview) TextView mTextview;
 
-    @Override protected void setContentView(Bundle savedInstanceState)
+    @Override protected int getLayoutResource()
     {
-        setContentView(R.layout.activity_main);
+        return R.layout.activity_main;
     }
 
     @Override protected void initTitlebar(IFTitlebar titlebar)
@@ -30,7 +30,12 @@ public class MainActivity extends FBaseActivity
         titlebar.setRight1Visible();
     }
 
-    @Override protected void init()
+    @Override protected View getLoadingView()
+    {
+        return null;
+    }
+
+    @Override protected void onInit(Bundle savedInstanceState)
     {
 
     }
@@ -41,7 +46,8 @@ public class MainActivity extends FBaseActivity
 
     @OnClick(R.id.textview) public void onClick()
     {
-        startActivity(new Intent(this, HttpActivity.class));
+        Intent intent = FWebViewIntent.getFWebViewIntent(this, "http://www.baidu.com", "百度");
+        startActivity(intent);
     }
 
     @Override protected void onTitlebarRight1Click(View v)

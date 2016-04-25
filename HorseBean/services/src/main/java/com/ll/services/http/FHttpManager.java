@@ -15,7 +15,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
- * Created by User on 2016/4/17.
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
  */
 public class FHttpManager
 {

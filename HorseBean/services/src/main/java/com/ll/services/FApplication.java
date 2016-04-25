@@ -5,7 +5,8 @@ import android.app.Application;
 import com.ll.services.helper.FLog;
 
 /**
- * Created by Administrator on 2016/3/30.
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
  */
 public class FApplication extends Application
 {

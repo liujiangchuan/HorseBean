@@ -2,6 +2,10 @@ package com.ll.services;
 
 import android.util.Log;
 
+/**
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
+ */
 public final class FConfig
 {
     //log

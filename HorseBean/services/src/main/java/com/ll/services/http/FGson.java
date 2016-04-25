@@ -3,7 +3,8 @@ package com.ll.services.http;
 import com.google.gson.Gson;
 
 /**
- * Created by Administrator on 2016/4/20.
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
  */
 public class FGson
 {

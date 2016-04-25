@@ -5,7 +5,8 @@ import java.util.Map;
 import okhttp3.Request;
 
 /**
- * Created by User on 2016/4/17.
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
  */
 public abstract class FHttpRequestBuilder
 {

@@ -5,7 +5,8 @@ import android.util.AttributeSet;
 import android.view.View;
 
 /**
- * Created by Administrator on 2016/4/6.
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
  */
 public class FSquareImageView extends View
 {

@@ -1,9 +1,10 @@
 package com.ll.services.http;
 
-import com.ll.services.activity.FBaseActivity;
+import com.ll.services.ui.FBaseActivity;
 
 /**
- * Created by User on 2016/4/19.
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
  */
 public abstract class FHttpBaseModel implements IFHttpRequestCallback
 {

@@ -5,7 +5,8 @@ import com.ll.services.http.builder.FHttpRequestBuilder;
 import java.util.Map;
 
 /**
- * Created by User on 2016/4/15.
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
  */
 public abstract class FHttpBaseRequest
 {

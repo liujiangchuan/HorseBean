@@ -11,6 +11,10 @@ import android.graphics.Paint;
 
 import java.io.InputStream;
 
+/**
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
+ */
 public class FBitmapUtil
 {
     /**

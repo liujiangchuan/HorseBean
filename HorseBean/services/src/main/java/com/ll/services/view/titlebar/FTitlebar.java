@@ -11,9 +11,9 @@ import android.widget.TextView;
 import com.ll.services.R;
 import com.ll.services.helper.FLog;
 
-
 /**
- * Created by Administrator on 2016/3/23.
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
  */
 public class FTitlebar extends LinearLayout implements IFTitlebar
 {
@@ -86,6 +86,18 @@ public class FTitlebar extends LinearLayout implements IFTitlebar
         if (null != mFTitlebarText)
         {
             mFTitlebarText.setText(resId);
+        }
+        else
+        {
+            FLog.e("mFTitlebarText is null!");
+        }
+    }
+
+    @Override public void setTitleText(String text)
+    {
+        if (null != mFTitlebarText)
+        {
+            mFTitlebarText.setText(text);
         }
         else
         {

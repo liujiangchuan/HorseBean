@@ -1,5 +1,9 @@
 package com.ll.services;
 
+/**
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
+ */
 public final class FC
 {
     public static final class fSharedPreference

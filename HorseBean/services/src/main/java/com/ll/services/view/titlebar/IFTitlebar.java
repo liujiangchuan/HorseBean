@@ -1,12 +1,15 @@
 package com.ll.services.view.titlebar;
 
 /**
- * Created by Administrator on 2016/3/24.
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
  */
 public interface IFTitlebar
 {
     //text
     void setTitleText(int resId);
+
+    void setTitleText(String text);
 
     //left
     void setLeft1Visible();

@@ -8,6 +8,10 @@ import com.ll.services.FApplication;
 
 import java.util.List;
 
+/**
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
+ */
 public class FProcessUtil
 {
     public static String getProcessName(int pid)

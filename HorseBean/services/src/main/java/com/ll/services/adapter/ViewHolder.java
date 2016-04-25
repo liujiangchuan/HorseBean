@@ -7,7 +7,8 @@ import android.view.View;
 import com.ll.services.FApplication;
 
 /**
- * Created by User on 2016/4/24.
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
  */
 public class ViewHolder
 {

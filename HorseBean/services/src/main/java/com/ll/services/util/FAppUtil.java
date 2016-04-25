@@ -14,6 +14,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
+ */
 public class FAppUtil
 {
     public static String getAppName()
@@ -21,8 +25,8 @@ public class FAppUtil
         try
         {
             PackageManager packageManager = FApplication.getAppContext().getPackageManager();
-            PackageInfo packageInfo = packageManager
-                    .getPackageInfo(FApplication.getAppContext().getPackageName(), 0);
+            PackageInfo packageInfo =
+                    packageManager.getPackageInfo(FApplication.getAppContext().getPackageName(), 0);
             int labelRes = packageInfo.applicationInfo.labelRes;
             return FApplication.getAppContext().getResources().getString(labelRes);
         }
@@ -38,8 +42,8 @@ public class FAppUtil
         try
         {
             PackageManager packageManager = FApplication.getAppContext().getPackageManager();
-            PackageInfo packageInfo = packageManager
-                    .getPackageInfo(FApplication.getAppContext().getPackageName(), 0);
+            PackageInfo packageInfo =
+                    packageManager.getPackageInfo(FApplication.getAppContext().getPackageName(), 0);
             return packageInfo.versionName;
         }
         catch (NameNotFoundException e)

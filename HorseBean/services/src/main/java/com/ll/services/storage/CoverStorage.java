@@ -6,6 +6,10 @@ import com.ll.services.util.FFileUtil;
 
 import java.io.File;
 
+/**
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
+ */
 public class CoverStorage extends FBaseStorage
 {
     private final static String DIRECTORY_COVER = "cover";

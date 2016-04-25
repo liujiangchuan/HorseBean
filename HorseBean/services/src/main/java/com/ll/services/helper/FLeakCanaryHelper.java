@@ -6,7 +6,8 @@ import com.ll.services.FConfig;
 import com.squareup.leakcanary.LeakCanary;
 
 /**
- * Created by Administrator on 2016/4/19.
+ * Created by Liujc on 2016/4/25.
+ * Email liujiangchuan@hotmail.com
  */
 public class FLeakCanaryHelper
 {
