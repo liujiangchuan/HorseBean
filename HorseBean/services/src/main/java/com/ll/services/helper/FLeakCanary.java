@@ -9,7 +9,7 @@ import com.squareup.leakcanary.LeakCanary;
  * Created by Liujc on 2016/4/25.
  * Email liujiangchuan@hotmail.com
  */
-public class FLeakCanaryHelper
+public class FLeakCanary
 {
     public void install(Application application)
     {

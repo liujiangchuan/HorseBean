@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
+        android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".module.database.DatabaseActivity"/>
-        <activity android:name=".module.glide.GlideActivity"/>
+        <activity android:name=".module.glide.activity.GlideActivity"/>
         <activity android:name=".module.http.HttpActivity"/>
 
         <meta-data

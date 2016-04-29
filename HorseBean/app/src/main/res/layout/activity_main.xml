@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<com.ll.services.view.layoutloader.FRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,4 +14,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"/>
-</RelativeLayout>
+
+    <com.ll.services.view.layoutloader.FLinearLayout
+        android:id="@+id/relativelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/textview"
+        android:layout_marginTop="30dp"
+        android:background="@color/green"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/t1"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:text="asdjifosdfjiosaf"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="asjdiofsjdifosajdf"
+            android:textColor="@color/black"/>
+
+    </com.ll.services.view.layoutloader.FLinearLayout>
+</com.ll.services.view.layoutloader.FRelativeLayout>

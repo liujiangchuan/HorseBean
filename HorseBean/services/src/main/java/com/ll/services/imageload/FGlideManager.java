@@ -2,9 +2,11 @@ package com.ll.services.imageload;
 
 import android.content.Context;
 import android.net.Uri;
+import android.widget.AbsListView;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.ll.services.FApplication;
 import com.ll.services.R;
 import com.ll.services.helper.FLog;
 
@@ -88,5 +90,29 @@ public class FGlideManager
                 .transform(new FGlideCircleTransform(context)).into(imageView);
         FLog.i("Context=" + context.getClass().getName() + ", Path=" + path + ", ImageView=" +
                 imageView.toString());
+    }
+
+    public void loadResGif(Context context, int resId, ImageView imageView)
+    {
+        Uri uri = resourceIdToUri(context, resId);
+        Glide.with(context).load(uri).asGif().placeholder(R.color.f_transparent_1a)
+                .error(R.color.f_transparent_1a).into(imageView);
+        FLog.i("Context=" + context.getClass().getName() + ", Uri=" + uri + ", ImageView=" +
+                imageView.toString());
+    }
+
+    public void setOnScrollStateChanged(int scollState)
+    {
+        switch (scollState)
+        {
+            case AbsListView.OnScrollListener.SCROLL_STATE_FLING:
+                Glide.with(FApplication.getAppContext()).pauseRequests();
+                break;
+            case AbsListView.OnScrollListener.SCROLL_STATE_IDLE:
+                Glide.with(FApplication.getAppContext()).resumeRequests();
+                break;
+            case AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
+                Glide.with(FApplication.getAppContext()).resumeRequests();
+        }
     }
 }

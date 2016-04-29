@@ -1,10 +1,11 @@
-package com.ll.services.helper;
+package com.ll.services.tools;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 import com.ll.services.FApplication;
+import com.ll.services.helper.FLog;
 
 /**
  * Created by Liujc on 2016/4/25.

@@ -5,10 +5,10 @@ import android.os.AsyncTask;
 import com.ll.services.FApplication;
 import com.ll.services.FC;
 import com.ll.services.helper.FCrashHandler;
-import com.ll.services.helper.FLeakCanaryHelper;
+import com.ll.services.helper.FLeakCanary;
 import com.ll.services.helper.FLog;
-import com.ll.services.helper.FSharedPreference;
-import com.ll.services.storage.CoverStorage;
+import com.ll.services.tools.FSharedPreference;
+import com.ll.services.storage.FCoverStorage;
 import com.ll.services.util.FAppUtil;
 
 
@@ -45,8 +45,8 @@ public class MyApp extends FApplication
             FLog.i("AppInitTask start.");
             new MyConfig().init();
             FCrashHandler.getInstance().init();
-            new FLeakCanaryHelper().install(instance);
-            CoverStorage.clear();
+            new FLeakCanary().install(instance);
+            FCoverStorage.clear();
             //first start
             if (FAppUtil.isFirstStartApp())
             {

@@ -12,8 +12,8 @@ import android.view.Window;
 import com.ll.services.R;
 import com.ll.services.helper.FLog;
 import com.ll.services.helper.FStrictModeWrapper;
-import com.ll.services.view.pageloading.FPageLoadingView;
-import com.ll.services.view.pageloading.IFPageLoading;
+import com.ll.services.view.layoutloader.FLayoutLoaderNoneImpl;
+import com.ll.services.view.layoutloader.IFLayoutLoader;
 import com.ll.services.view.titlebar.FTitlebar;
 import com.ll.services.view.titlebar.IFTitlebar;
 import com.ll.services.view.titlebar.onTitlebarClickListener;
@@ -27,9 +27,10 @@ import butterknife.ButterKnife;
 public abstract class FBaseActivity extends Activity
 {
     public static Handler sUIHandler = new Handler(Looper.getMainLooper());
-    private IFPageLoading mIFPageLoading;
+    protected IFTitlebar mIFTitlebar;
+    protected IFLayoutLoader mIFLayoutLoader;
 
-    @Override protected void onCreate(@Nullable Bundle savedInstanceState)
+    @Override protected final void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         FStrictModeWrapper.init();
@@ -39,7 +40,7 @@ public abstract class FBaseActivity extends Activity
         getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.f_titlebar);
         ButterKnife.bind(this);
         initTitlebar();
-        initPageLoadingView(view);
+        initLoadingView(view);
         onInit(savedInstanceState);
         FLog.i("onCreate");
     }
@@ -121,7 +122,6 @@ public abstract class FBaseActivity extends Activity
     private void initTitlebar()
     {
         FTitlebar fTitlebar = (FTitlebar) findViewById(R.id.f_titlebar_id);
-        initTitlebar(fTitlebar);
         fTitlebar.setOnTitlebarClickListener(new onTitlebarClickListener()
         {
             @Override public void onLeft1Click(View v)
@@ -134,33 +134,43 @@ public abstract class FBaseActivity extends Activity
                 onTitlebarRight1Click(v);
             }
         });
+        mIFTitlebar = fTitlebar;
+        initTitlebar(mIFTitlebar);
     }
     //------------------------------------  titlebar end ------------------------------------
 
     //-----------------------------------  Loading start ------------------------------------
-    private void initPageLoadingView(View view)
+    private void initLoadingView(View view)
     {
-        mIFPageLoading = new FPageLoadingView(this, view);
+        View loadingView = getLoadingView();
+        if (null != loadingView)
+        {
+            if (loadingView instanceof IFLayoutLoader)
+            {
+                mIFLayoutLoader = (IFLayoutLoader) loadingView;
+                FLog.i("attach customer loading view success!");
+            }
+            else
+            {
+                mIFLayoutLoader = new FLayoutLoaderNoneImpl(
+                        "loading view is not a instance of IFLayoutLoader!");
+            }
+        }
+        else if (view instanceof IFLayoutLoader)
+        {
+            mIFLayoutLoader = (IFLayoutLoader) view;
+            FLog.i("attach root view as loading view success!");
+        }
+        else
+        {
+            mIFLayoutLoader =
+                    new FLayoutLoaderNoneImpl("root view is not a instance of IFLayoutLoader!");
+        }
     }
 
-    public void showEmptyLayout()
+    protected IFLayoutLoader getLayoutLoader()
     {
-        mIFPageLoading.showEmpty();
-    }
-
-    public void showErrorLayout()
-    {
-        mIFPageLoading.showError();
-    }
-
-    public void showLoadingLayout()
-    {
-        mIFPageLoading.showLoading();
-    }
-
-    public void hideLoadingLayout()
-    {
-        mIFPageLoading.hide();
+        return mIFLayoutLoader;
     }
     //------------------------------------  Loading end ------------------------------------
 }

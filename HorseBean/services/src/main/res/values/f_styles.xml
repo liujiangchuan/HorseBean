@@ -2,7 +2,7 @@
 <resources>
 
     <style name="FTitlebarBackground">
-        <item name="android:background">#ff0000</item>
+        <item name="android:background">@color/light_blue</item>
     </style>
 
     <style name="FBaseAppTheme" parent="android:Theme">

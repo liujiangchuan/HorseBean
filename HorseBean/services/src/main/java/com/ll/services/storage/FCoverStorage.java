@@ -10,7 +10,7 @@ import java.io.File;
  * Created by Liujc on 2016/4/25.
  * Email liujiangchuan@hotmail.com
  */
-public class CoverStorage extends FBaseStorage
+public class FCoverStorage extends FBaseStorage
 {
     private final static String DIRECTORY_COVER = "cover";
     private static final String SDCARD_CACHE_COVER_PATH =

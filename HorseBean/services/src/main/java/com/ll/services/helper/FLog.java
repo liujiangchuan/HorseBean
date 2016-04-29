@@ -3,7 +3,7 @@ package com.ll.services.helper;
 import android.util.Log;
 
 import com.ll.services.FConfig;
-import com.ll.services.storage.LogStorage;
+import com.ll.services.storage.FLogStorage;
 import com.ll.services.util.FFileUtil;
 import com.ll.services.util.FTimeUtil;
 
@@ -132,7 +132,7 @@ public class FLog
 
     private static void writeToLog(String tag, String msg)
     {
-        String path = LogStorage.getPath();
+        String path = FLogStorage.getPath();
         if (null != path)
         {
             String log = "[" + FTimeUtil.getCurrentTime() + "] " + tag + ": " + msg;

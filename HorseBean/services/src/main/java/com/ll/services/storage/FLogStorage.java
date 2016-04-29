@@ -10,7 +10,7 @@ import java.io.File;
  * Created by Liujc on 2016/4/25.
  * Email liujiangchuan@hotmail.com
  */
-public class LogStorage extends FBaseStorage
+public class FLogStorage extends FBaseStorage
 {
     private static final String DIRECTORY_LOG = "log";
     private static final String SDCARD_FILES_LOG_PATH =

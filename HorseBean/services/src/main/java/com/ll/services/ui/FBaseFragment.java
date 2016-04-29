@@ -18,29 +18,29 @@ import butterknife.ButterKnife;
 public abstract class FBaseFragment extends Fragment
 {
 
-    protected View rootView;
+    protected View mRootView;
 
-    @Nullable @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                                 Bundle savedInstanceState)
+    @Nullable @Override public final View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                                       Bundle savedInstanceState)
     {
-        if (rootView == null)
+        if (mRootView == null)
         {
-            rootView = inflater.inflate(getLayoutResource(), container, false);
+            mRootView = inflater.inflate(getLayoutResource(), container, false);
         }
-        ButterKnife.bind(this, rootView);
-        ViewGroup parentView = (ViewGroup) rootView.getParent();
+        ButterKnife.bind(this, mRootView);
+        ViewGroup parentView = (ViewGroup) mRootView.getParent();
         if (parentView != null)
         {
-            parentView.removeView(rootView);
+            parentView.removeView(mRootView);
         }
-        onInit();
+        onInit(savedInstanceState);
         FLog.i("onCreateView");
-        return rootView;
+        return mRootView;
     }
 
     protected abstract int getLayoutResource();
 
-    protected abstract void onInit();
+    protected abstract void onInit(Bundle savedInstanceState);
 
     public String getName()
     {

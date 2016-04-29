@@ -2,7 +2,8 @@
 <com.ll.services.view.titlebar.FTitlebar
     android:id="@+id/f_titlebar_id"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/f_titlebar_bg"
-    android:orientation="horizontal"/>
+    android:orientation="horizontal"
+    tools:background="@color/light_blue"/>

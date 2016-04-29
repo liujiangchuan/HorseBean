@@ -19,8 +19,8 @@ import com.ll.services.view.titlebar.IFTitlebar;
 public class FWebViewActivity extends FBaseActivity
 {
     private static final int PROGRESS_RATIO = 1000;
-    ProgressBar mWebviewPb;
-    WebView mWebView;
+    private ProgressBar mWebviewPb;
+    private WebView mWebView;
 
     @Override protected int getLayoutResource()
     {
@@ -69,7 +69,6 @@ public class FWebViewActivity extends FBaseActivity
     private void enableAdjust()
     {
         this.mWebView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-        this.mWebView.getSettings().setLoadWithOverviewMode(true);
     }
 
     private void zoomedOut()
