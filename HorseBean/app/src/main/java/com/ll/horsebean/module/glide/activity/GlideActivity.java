@@ -6,7 +6,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.ll.horsebean.R;
-import com.ll.services.imageload.FGlideManager;
+import com.ll.services.imageload.FImageLoader;
 import com.ll.services.ui.FBaseActivity;
 import com.ll.services.view.titlebar.IFTitlebar;
 
@@ -45,7 +45,7 @@ public class GlideActivity extends FBaseActivity
 
     @OnClick(R.id.activity_glide_img1) public void onClick()
     {
-        FGlideManager.getInstance()
+        FImageLoader.getInstance()
                 .loadResGif(this, R.drawable.f_layout_loading, mActivityGlideImg1);
     }
 }

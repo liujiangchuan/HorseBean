@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="FTitlebarBackground">
+        <item name="android:background">#ff0000</item>
+    </style>
+
+    <style name="FBaseAppTheme" parent="android:Theme">
+        <item name="android:windowTitleBackgroundStyle">@style/FTitlebarBackground</item>
+        <item name="android:windowTitleSize">45dp</item>
+    </style>
+</resources>

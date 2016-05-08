@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 import com.ll.services.FApplication;
 import com.ll.services.R;
-import com.ll.services.imageload.FGlideManager;
+import com.ll.services.imageload.FImageLoader;
 
 /**
  * Created by Liujc on 2016/4/26.
@@ -80,7 +80,7 @@ public class FLayoutResource implements IFLayoutResource
         if (null == mLoadingLayout)
         {
             mLoadingLayout = mLayoutInflater.inflate(getLoadingResource(), null);
-            FGlideManager.getInstance()
+            FImageLoader.getInstance()
                     .loadResGif(FApplication.getAppContext(), R.drawable.f_layout_loading,
                             (ImageView) mLoadingLayout.findViewById(R.id.f_layout_loading_img));
         }

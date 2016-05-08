@@ -1,7 +1,9 @@
 package com.ll.services.ui;
 
-import android.content.Context;
 import android.content.Intent;
+
+import com.ll.services.FApplication;
+import com.ll.services.helper.FLog;
 
 /**
  * Created by Liujc on 2016/4/25.
@@ -12,11 +14,13 @@ public final class FWebViewIntent
     private static final String STRING_URL = "url";
     private static final String STRING_TITLE = "title";
 
-    public static Intent getFWebViewIntent(Context context, String url, String title)
+    public static Intent getFWebViewIntent(String url, String title)
     {
-        Intent intent = new Intent(context, FWebViewActivity.class);
+        Intent intent = new Intent(FApplication.getAppContext(), FWebViewActivity.class);
         intent.putExtra(STRING_URL, url);
         intent.putExtra(STRING_TITLE, title);
+        FLog.i("Context: " + FApplication.getAppContext().getClass().getName() + ", Url: " + url +
+                "title: " + title);
         return intent;
     }
 

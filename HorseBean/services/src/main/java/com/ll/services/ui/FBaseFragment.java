@@ -17,7 +17,6 @@ import butterknife.ButterKnife;
  */
 public abstract class FBaseFragment extends Fragment
 {
-
     protected View mRootView;
 
     @Nullable @Override public final View onCreateView(LayoutInflater inflater, ViewGroup container,

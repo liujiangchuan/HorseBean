@@ -1,4 +1,4 @@
-package com.ll.horsebean.module.main.model;
+package com.ll.horsebean.demo.main.model;
 
 import android.widget.TextView;
 

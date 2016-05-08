@@ -1,4 +1,4 @@
-package com.ll.horsebean.module.main.intent;
+package com.ll.horsebean.demo.main.activity;
 
 /**
  * Created by Liujc on 2016/4/25.

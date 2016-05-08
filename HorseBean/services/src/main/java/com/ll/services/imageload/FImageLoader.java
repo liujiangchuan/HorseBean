@@ -14,21 +14,21 @@ import com.ll.services.helper.FLog;
  * Created by Liujc on 2016/4/25.
  * Email liujiangchuan@hotmail.com
  */
-public class FGlideManager
+public class FImageLoader
 {
     public static final String ANDROID_RESOURCE = "android.resource://";
     public static final String FOREWARD_SLASH = "/";
 
-    private FGlideManager()
+    private FImageLoader()
     {
     }
 
     private static class GlideControlHolder
     {
-        private static FGlideManager instance = new FGlideManager();
+        private static FImageLoader instance = new FImageLoader();
     }
 
-    public static FGlideManager getInstance()
+    public static FImageLoader getInstance()
     {
         return GlideControlHolder.instance;
     }
@@ -41,8 +41,7 @@ public class FGlideManager
     public void loadImage(Context context, String url, ImageView imageView)
     {
         Glide.with(context).load(url).placeholder(R.color.f_transparent_1a)
-                .error(R.color.f_transparent_1a).crossFade()
-                .transform(new FGlideCircleTransform(context)).into(imageView);
+                .error(R.color.f_transparent_1a).crossFade().into(imageView);
         FLog.i("Context=" + context.getClass().getName() + ", Url=" + url + ", ImageView=" +
                 imageView.toString());
     }

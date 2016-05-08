@@ -1,10 +1,10 @@
 package com.ll.services.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
  * Created by Liujc on 2016/4/25.
  * Email liujiangchuan@hotmail.com
  */
-public abstract class FBaseActivity extends Activity
+public abstract class FBaseActivity extends FragmentActivity
 {
     public static Handler sUIHandler = new Handler(Looper.getMainLooper());
     protected IFTitlebar mIFTitlebar;
