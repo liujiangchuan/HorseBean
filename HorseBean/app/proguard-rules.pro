@@ -97,3 +97,13 @@
 # Gson
 -keep class com.google.**{ *; }
 -keep class sun.misc.Unsafe { *; }
+# Butter knife
+-keep class butterknife.** { *; }
+-dontwarn butterknife.internal.**
+-keep class **$$ViewBinder { *; }
+-keepclasseswithmembernames class * {
+    @butterknife.* <fields>;
+}
+-keepclasseswithmembernames class * {
+    @butterknife.* <methods>;
+}
