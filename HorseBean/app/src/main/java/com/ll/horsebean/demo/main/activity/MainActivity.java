@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ll.horsebean.R;
-import com.ll.horsebean.module.main.PaycodeTimer;
+import com.ll.horsebean.demo.PaycodeTimer;
 import com.ll.services.tools.FToast;
 import com.ll.services.ui.FBaseActivity;
 import com.ll.services.view.titlebar.IFTitlebar;

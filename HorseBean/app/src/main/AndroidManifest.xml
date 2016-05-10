@@ -21,7 +21,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".demo.DatabaseActivity"/>
-        <activity android:name=".demo.GlideActivity"/>
         <activity android:name=".demo.HttpActivity"/>
         <activity android:name=".demo.BannerActivity"/>
 
