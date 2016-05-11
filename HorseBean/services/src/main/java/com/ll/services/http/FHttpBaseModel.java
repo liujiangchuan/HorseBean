@@ -1,5 +1,6 @@
 package com.ll.services.http;
 
+import com.ll.services.helper.FLog;
 import com.ll.services.ui.FBaseActivity;
 
 /**
@@ -19,13 +20,16 @@ public abstract class FHttpBaseModel implements IFHttpRequestCallback
         mIFHttpModelCallback = ifHttpModelCallback;
     }
 
-    public abstract void sendRequest();
-
     protected void sendUIPreExecute()
     {
         if (null != mIFHttpModelCallback)
         {
             mIFHttpModelCallback.onPreExecute();
+            FLog.i("[sendUIPreExecute]");
+        }
+        else
+        {
+            FLog.e("mIFHttpModelCallback is null!");
         }
     }
 
@@ -38,8 +42,13 @@ public abstract class FHttpBaseModel implements IFHttpRequestCallback
                 @Override public void run()
                 {
                     mIFHttpModelCallback.onSuccessData();
+                    FLog.i("[sendUISuccessData]");
                 }
             });
+        }
+        else
+        {
+            FLog.e("mIFHttpModelCallback is null!");
         }
     }
 
@@ -52,8 +61,13 @@ public abstract class FHttpBaseModel implements IFHttpRequestCallback
                 @Override public void run()
                 {
                     mIFHttpModelCallback.onSuccessEmpty();
+                    FLog.i("[sendUISuccessEmpty]");
                 }
             });
+        }
+        else
+        {
+            FLog.e("mIFHttpModelCallback is null!");
         }
     }
 
@@ -66,8 +80,19 @@ public abstract class FHttpBaseModel implements IFHttpRequestCallback
                 @Override public void run()
                 {
                     mIFHttpModelCallback.onFailure();
+                    FLog.e("[sendUIFailure] mResponseStatus: " + mResponseStatus +
+                            "mResponseMsg: " + mResponseMsg);
+                    if (null != mResponseException)
+                    {
+                        FLog.e("[sendUIFailure] mResponseException: " +
+                                mResponseException.getMessage());
+                    }
                 }
             });
+        }
+        else
+        {
+            FLog.e("mIFHttpModelCallback is null!");
         }
     }
 
@@ -80,8 +105,13 @@ public abstract class FHttpBaseModel implements IFHttpRequestCallback
                 @Override public void run()
                 {
                     mIFHttpModelCallback.onAfterExecute();
+                    FLog.i("[sendUIAfterExecute]");
                 }
             });
+        }
+        else
+        {
+            FLog.e("mIFHttpModelCallback is null!");
         }
     }
 }

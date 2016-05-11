@@ -8,26 +8,21 @@ public class FHttpModelCallback
 {
     public void onFailure()
     {
-
     }
 
     public void onPreExecute()
     {
-
     }
 
     public void onAfterExecute()
     {
-
     }
 
     public void onSuccessData()
     {
-
     }
 
     public void onSuccessEmpty()
     {
-
     }
 }

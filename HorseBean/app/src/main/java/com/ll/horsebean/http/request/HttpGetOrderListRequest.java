@@ -43,6 +43,11 @@ public class HttpGetOrderListRequest extends HttpRequest
         }
     }
 
+    @Override public String getHost()
+    {
+        return null;
+    }
+
     @Override public String getUrl()
     {
         return URL;

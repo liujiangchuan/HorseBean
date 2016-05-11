@@ -16,7 +16,7 @@ public class HttpOrderListModel extends FHttpBaseModel
         super(ifHttpModelCallback);
     }
 
-    @Override public void sendRequest()
+    public void sendRequest()
     {
         FHttpBaseRequest getOrderListRequest =
                 new HttpGetOrderListRequest.ParamsBuilder().setP("a").build();

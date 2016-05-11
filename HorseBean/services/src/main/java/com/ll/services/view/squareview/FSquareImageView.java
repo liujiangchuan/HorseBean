@@ -2,13 +2,13 @@ package com.ll.services.view.squareview;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
+import android.widget.ImageView;
 
 /**
  * Created by Liujc on 2016/4/25.
  * Email liujiangchuan@hotmail.com
  */
-public class FSquareImageView extends View
+public class FSquareImageView extends ImageView
 {
     public FSquareImageView(Context context)
     {

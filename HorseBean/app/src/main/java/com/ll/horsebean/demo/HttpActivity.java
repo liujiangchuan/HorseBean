@@ -23,10 +23,9 @@ public class HttpActivity extends Activity
             @Override public void onSuccessData()
             {
                 super.onSuccessData();
-                httpOrderListModel.toString();
             }
         };
         httpOrderListModel = new HttpOrderListModel(fHttpModelCallback);
-        httpOrderListModel.sendRequest();
+//        httpOrderListModel.sendRequest();
     }
 }

@@ -3,6 +3,8 @@ package com.ll.services.http;
 import com.ll.services.FC;
 import com.ll.services.helper.FLog;
 
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -47,22 +49,30 @@ public class FHttpManager
                     fHttpRequestCallback.onFailure(STATUS_ERROR, e.getMessage(), e);
                     fHttpRequestCallback.onAfterExecute();
                     showRequestLog(call);
+                    FLog.e("onFailure e: " + e.getMessage());
                 }
 
                 @Override public void onResponse(Call call, Response response)
                 {
                     try
                     {
+                        //return result
                         String result = response.body().string();
-                        FHttpResponseBean bean =
-                                FGson.get().fromJson(result, FHttpResponseBean.class);
-                        if (FC.fHttp.F_HTTP_RESPONSE_SUCCESS == bean.status)
+                        FLog.i("onResponse result: " + result);
+                        //Get status, msg and data.
+                        //If the type of 'data' is confirm JSONObject, we'd better use FHttpResponseBean.
+                        //FGson.get().fromJson(result, FHttpResponseBean.class)
+                        JSONObject json = new JSONObject(result);
+                        int status = json.getInt("status");
+                        String msg = json.get("msg").toString();
+                        String data = json.get("data").toString();
+                        if (FC.fHttp.F_HTTP_RESPONSE_SUCCESS == status)
                         {
-                            fHttpRequestCallback.onSuccess(bean.data.toString());
+                            fHttpRequestCallback.onSuccess(data);
                         }
                         else
                         {
-                            fHttpRequestCallback.onFailure(bean.status, bean.msg, null);
+                            fHttpRequestCallback.onFailure(status, msg, null);
                         }
                     }
                     catch (Exception e)

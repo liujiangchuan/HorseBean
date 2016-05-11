@@ -15,6 +15,8 @@ public abstract class FHttpBaseRequest
         return getUrl().hashCode();
     }
 
+    public abstract String getHost();
+
     public abstract String getUrl();
 
     public abstract Map<String, String> getParams();
