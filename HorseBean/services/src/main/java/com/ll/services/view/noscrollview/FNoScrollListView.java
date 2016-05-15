@@ -3,25 +3,25 @@ package com.ll.services.view.noscrollview;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.widget.GridView;
+import android.widget.ListView;
 
 /**
  * Created by Liujc on 2016/5/12.
  * Email liujiangchuan@hotmail.com
  */
-public class NoScrollGridView extends GridView
+public class FNoScrollListView extends ListView
 {
-    public NoScrollGridView(Context context)
+    public FNoScrollListView(Context context)
     {
         super(context);
     }
 
-    public NoScrollGridView(Context context, AttributeSet attrs)
+    public FNoScrollListView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
     }
 
-    public NoScrollGridView(Context context, AttributeSet attrs, int defStyleAttr)
+    public FNoScrollListView(Context context, AttributeSet attrs, int defStyleAttr)
     {
         super(context, attrs, defStyleAttr);
     }
