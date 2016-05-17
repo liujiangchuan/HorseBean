@@ -8,6 +8,8 @@ import android.widget.TextView;
 import com.ll.horsebean.R;
 import com.ll.horsebean.demo.PaycodeTimer;
 import com.ll.services.tools.FToast;
+import com.ll.services.tools.multiclick.FMultiClick;
+import com.ll.services.tools.multiclick.onActivateListener;
 import com.ll.services.ui.FBaseActivity;
 import com.ll.services.view.titlebar.IFTitlebar;
 
@@ -19,7 +21,7 @@ public class MainActivity extends FBaseActivity
     @Bind(R.id.textview) TextView mTextview;
     @Bind(R.id.relativelayout) LinearLayout mRelativeLayout;
 
-    int a = 0;
+    private FMultiClick mFMultiClick;
 
     @Override protected int getLayoutResource()
     {
@@ -40,6 +42,13 @@ public class MainActivity extends FBaseActivity
 
     @Override protected void onInit(Bundle savedInstanceState)
     {
+        mFMultiClick = new FMultiClick(3, 1500, new onActivateListener()
+        {
+            @Override public void onActivate()
+            {
+                FToast.showShort("show");
+            }
+        });
     }
 
     @Override protected void reloadData()
@@ -48,6 +57,7 @@ public class MainActivity extends FBaseActivity
 
     @OnClick(R.id.textview) public void onClick()
     {
+        mFMultiClick.onClick();
     }
 
     @Override protected void onTitlebarRight1Click(View v)
