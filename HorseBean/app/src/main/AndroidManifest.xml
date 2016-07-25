@@ -23,6 +23,8 @@
         <activity android:name=".demo.DatabaseActivity"/>
         <activity android:name=".demo.HttpActivity"/>
         <activity android:name=".demo.BannerActivity"/>
+        <activity android:name=".demo.GlideActivity"/>
+        <activity android:name=".demo.RecyclerViewActivity"/>
 
         <meta-data
             android:name="CHANNEL"

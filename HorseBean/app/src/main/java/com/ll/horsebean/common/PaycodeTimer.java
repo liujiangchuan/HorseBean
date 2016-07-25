@@ -1,4 +1,4 @@
-package com.ll.horsebean.demo;
+package com.ll.horsebean.common;
 
 import com.ll.services.tools.timer.FCountdownTimer;
 

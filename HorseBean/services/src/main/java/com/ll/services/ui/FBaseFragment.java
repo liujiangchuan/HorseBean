@@ -41,6 +41,8 @@ public abstract class FBaseFragment extends Fragment
 
     protected abstract void onInit(Bundle savedInstanceState);
 
+    public abstract void reloadData();
+
     public String getName()
     {
         return FBaseFragment.class.getName();

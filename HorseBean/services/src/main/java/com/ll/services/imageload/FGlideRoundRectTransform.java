@@ -17,17 +17,27 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
  */
 public class FGlideRoundRectTransform extends BitmapTransformation
 {
-    private static float radius = 0f;
-
-    public FGlideRoundRectTransform(Context context)
-    {
-        this(context, 4);
-    }
+    private static float rx = 0f,ry = 0f;
 
     public FGlideRoundRectTransform(Context context, int dp)
     {
         super(context);
-        this.radius = Resources.getSystem().getDisplayMetrics().density * dp;
+        this.rx = Resources.getSystem().getDisplayMetrics().density * dp;
+        this.ry = Resources.getSystem().getDisplayMetrics().density * dp;
+    }
+
+    /**
+     *
+     * @param context
+     * @param radius_x dp
+     * @param radius_y dp
+     */
+    public FGlideRoundRectTransform(Context context, int radius_x, int radius_y)
+    {
+        super(context);
+        this.rx = Resources.getSystem().getDisplayMetrics().density * radius_x;
+        this.ry = Resources.getSystem().getDisplayMetrics().density * radius_y;
+
     }
 
     @Override
@@ -36,7 +46,7 @@ public class FGlideRoundRectTransform extends BitmapTransformation
         return roundCrop(pool, toTransform);
     }
 
-    private static Bitmap roundCrop(BitmapPool pool, Bitmap source)
+    private  Bitmap roundCrop(BitmapPool pool, Bitmap source)
     {
         if (source == null)
         {
@@ -55,13 +65,14 @@ public class FGlideRoundRectTransform extends BitmapTransformation
                 new BitmapShader(source, BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP));
         paint.setAntiAlias(true);
         RectF rectF = new RectF(0f, 0f, source.getWidth(), source.getHeight());
-        canvas.drawRoundRect(rectF, radius, radius, paint);
+        canvas.drawRoundRect(rectF, rx, ry, paint);
 
         return result;
     }
 
+
     @Override public String getId()
     {
-        return getClass().getName() + Math.round(radius);
+        return getClass().getName() + Math.round(rx) + Math.round(ry);
     }
 }

@@ -57,6 +57,11 @@ public class FCycleViewPager extends FBaseFragment implements ViewPager.OnPageCh
         mMyHandler = new MyHandler(this);
     }
 
+    @Override public void reloadData()
+    {
+
+    }
+
     private void findViews()
     {
         mFCycleViewpagerContentLayout =

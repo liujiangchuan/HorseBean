@@ -6,22 +6,28 @@ package com.ll.services.view.titlebar;
  */
 public interface IFTitlebar
 {
-    //text
     void setTitleText(int resId);
 
     void setTitleText(String text);
 
-    //left
-    void setLeft1Visible();
+    interface IFTitlebarBtn
+    {
+        void setBtnVisible();
 
-    void setLeft1Invisible();
+        void setBtnInvisible();
 
-    void setLeft1Resource(int resId);
+        void setBtnResource(int resId);
 
-    //right
-    void setRight1Visible();
+        void setBtnText(int resId);
 
-    void setRight1Invisible();
+        void setBtnTextColor(int color);
+    }
 
-    void setRight1Text(int resId);
+    IFTitlebarBtn getLeft1();
+
+//    IFTitlebarBtn getLeft2();
+
+    IFTitlebarBtn getRight1();
+
+    IFTitlebarBtn getRight2();
 }

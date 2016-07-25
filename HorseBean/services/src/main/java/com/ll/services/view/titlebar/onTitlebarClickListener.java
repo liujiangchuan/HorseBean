@@ -10,5 +10,9 @@ public interface onTitlebarClickListener
 {
     void onLeft1Click(View v);
 
+    void onLeft2Click(View v);
+
     void onRight1Click(View v);
+
+    void onRight2Click(View v);
 }

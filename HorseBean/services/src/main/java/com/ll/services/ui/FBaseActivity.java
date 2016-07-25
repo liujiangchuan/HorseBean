@@ -1,5 +1,6 @@
 package com.ll.services.ui;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -12,8 +13,7 @@ import android.view.Window;
 import com.ll.services.R;
 import com.ll.services.helper.FLog;
 import com.ll.services.helper.FStrictModeWrapper;
-import com.ll.services.view.layoutloader.FLayoutLoaderNoneImpl;
-import com.ll.services.view.layoutloader.IFLayoutLoader;
+import com.ll.services.ui.dialog.FLoadingDialog;
 import com.ll.services.view.titlebar.FTitlebar;
 import com.ll.services.view.titlebar.IFTitlebar;
 import com.ll.services.view.titlebar.onTitlebarClickListener;
@@ -27,8 +27,8 @@ import butterknife.ButterKnife;
 public abstract class FBaseActivity extends FragmentActivity
 {
     public static Handler sUIHandler = new Handler(Looper.getMainLooper());
-    protected IFTitlebar mIFTitlebar;
-    protected IFLayoutLoader mIFLayoutLoader;
+    private IFTitlebar mIFTitlebar;
+    private FLoadingDialog mFLoadingDialog;
 
     @Override protected final void onCreate(@Nullable Bundle savedInstanceState)
     {
@@ -37,11 +37,10 @@ public abstract class FBaseActivity extends FragmentActivity
         setBase();
         View view = LayoutInflater.from(this).inflate(getLayoutResource(), null);
         setContentView(view);
-        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.f_titlebar);
         ButterKnife.bind(this);
         initTitlebar();
-        initLoadingView(view);
         onInit(savedInstanceState);
+        loadData();
         FLog.i("onCreate");
     }
 
@@ -77,11 +76,28 @@ public abstract class FBaseActivity extends FragmentActivity
     }
 
     /**
+     * Whether need the custom title.
+     *
+     * @return true if show the title.
+     */
+    protected boolean isShowTitle()
+    {
+        return true;
+    }
+
+    /**
      * invoke before setContentView()
      */
     protected void setBase()
     {
-        requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+        if (isShowTitle())
+        {
+            requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+        }
+        else
+        {
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+        }
     }
 
     /**
@@ -92,20 +108,13 @@ public abstract class FBaseActivity extends FragmentActivity
     protected abstract void initTitlebar(IFTitlebar titlebar);
 
     /**
-     * if loading the whole page, it is not necessary to be override.
-     *
-     * @return
-     */
-    protected abstract View getLoadingView();
-
-    /**
      * invoke after setContentView()
      *
      * @param savedInstanceState
      */
     protected abstract void onInit(Bundle savedInstanceState);
 
-    protected abstract void reloadData();
+    protected abstract void loadData();
 
     //-----------------------------------  titlebar start ------------------------------------
     protected void onTitlebarLeft1Click(View v)
@@ -114,63 +123,88 @@ public abstract class FBaseActivity extends FragmentActivity
         FLog.i("onTitlebarLeft1Click");
     }
 
+    protected void onTitlebarLeft2Click(View v)
+    {
+        FLog.i("onTitlebarLeft2Click");
+    }
+
     protected void onTitlebarRight1Click(View v)
+    {
+        FLog.i("onTitlebarRight1Click");
+    }
+
+    protected void onTitlebarRight2Click(View v)
     {
         FLog.i("onTitlebarRight1Click");
     }
 
     private void initTitlebar()
     {
-        FTitlebar fTitlebar = (FTitlebar) findViewById(R.id.f_titlebar_id);
-        fTitlebar.setOnTitlebarClickListener(new onTitlebarClickListener()
+        if (isShowTitle())
         {
-            @Override public void onLeft1Click(View v)
+            getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.f_titlebar);
+            FTitlebar fTitlebar = (FTitlebar) findViewById(R.id.f_titlebar_id);
+            if (null != fTitlebar)
             {
-                onTitlebarLeft1Click(v);
-            }
+                fTitlebar.setOnTitlebarClickListener(new onTitlebarClickListener()
+                {
+                    @Override public void onLeft1Click(View v)
+                    {
+                        onTitlebarLeft1Click(v);
+                    }
 
-            @Override public void onRight1Click(View v)
-            {
-                onTitlebarRight1Click(v);
+                    @Override public void onLeft2Click(View v)
+                    {
+                        onTitlebarLeft2Click(v);
+                    }
+
+                    @Override public void onRight1Click(View v)
+                    {
+                        onTitlebarRight1Click(v);
+                    }
+
+                    @Override public void onRight2Click(View v)
+                    {
+                        onTitlebarRight2Click(v);
+                    }
+                });
+                mIFTitlebar = fTitlebar;
+                initTitlebar(mIFTitlebar);
             }
-        });
-        mIFTitlebar = fTitlebar;
-        initTitlebar(mIFTitlebar);
+            else
+            {
+                FLog.e("fTitlebar is null!");
+            }
+        }
+        else
+        {
+            FLog.w("Do NOT need the custom title.");
+        }
     }
     //------------------------------------  titlebar end ------------------------------------
 
     //-----------------------------------  Loading start ------------------------------------
-    private void initLoadingView(View view)
+    public void showLoadingDialog(DialogInterface.OnCancelListener onCancelListener)
     {
-        View loadingView = getLoadingView();
-        if (null != loadingView)
+        boolean ret = false;
+        if (null != mFLoadingDialog)
         {
-            if (loadingView instanceof IFLayoutLoader)
-            {
-                mIFLayoutLoader = (IFLayoutLoader) loadingView;
-                FLog.i("attach customer loading view success!");
-            }
-            else
-            {
-                mIFLayoutLoader = new FLayoutLoaderNoneImpl(
-                        "loading view is not a instance of IFLayoutLoader!");
-            }
+            ret = mFLoadingDialog.isShowing();
         }
-        else if (view instanceof IFLayoutLoader)
+        if (!ret)
         {
-            mIFLayoutLoader = (IFLayoutLoader) view;
-            FLog.i("attach root view as loading view success!");
+            mFLoadingDialog = FLoadingDialog.show(this, false, onCancelListener);
         }
-        else
-        {
-            mIFLayoutLoader =
-                    new FLayoutLoaderNoneImpl("root view is not a instance of IFLayoutLoader!");
-        }
+        FLog.i("showLoadingDialog: " + ret);
     }
 
-    protected IFLayoutLoader getLayoutLoader()
+    public void dismissLoadingDialog()
     {
-        return mIFLayoutLoader;
+        if (null != mFLoadingDialog && mFLoadingDialog.isShowing())
+        {
+            mFLoadingDialog.dismiss();
+        }
+        FLog.i("dismissLoadingDialog");
     }
     //------------------------------------  Loading end ------------------------------------
 }

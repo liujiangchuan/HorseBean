@@ -1,27 +1,32 @@
 package com.ll.horsebean.demo.main.activity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.ll.horsebean.R;
-import com.ll.horsebean.demo.PaycodeTimer;
+import com.ll.horsebean.common.DemoBaseActivity;
+import com.ll.horsebean.demo.main.model.MainAdapter;
+import com.ll.horsebean.demo.main.model.MainModel;
 import com.ll.services.tools.FToast;
-import com.ll.services.tools.multiclick.FMultiClick;
-import com.ll.services.tools.multiclick.onActivateListener;
-import com.ll.services.ui.FBaseActivity;
+import com.ll.services.view.layoutloader.FRelativeLayout;
+import com.ll.services.view.layoutloader.onFLayoutLoaderClickListener;
 import com.ll.services.view.titlebar.IFTitlebar;
 
 import butterknife.Bind;
-import butterknife.OnClick;
 
-public class MainActivity extends FBaseActivity
+public class MainActivity extends DemoBaseActivity implements IMainActivity
 {
-    @Bind(R.id.textview) TextView mTextview;
-    @Bind(R.id.relativelayout) LinearLayout mRelativeLayout;
-
-    private FMultiClick mFMultiClick;
+    //view
+    @Bind(R.id.lv_activities) ListView mLvActivities;
+    @Bind(R.id.rl_parent_layout) FRelativeLayout mRlParentLayout;
+    //data
+    private MainModel mMainModel;
+    private MainAdapter mMainAdapter;
+    private onFLayoutLoaderClickListener mOnFLayoutLoaderClickListener;
 
     @Override protected int getLayoutResource()
     {
@@ -30,40 +35,99 @@ public class MainActivity extends FBaseActivity
 
     @Override protected void initTitlebar(IFTitlebar titlebar)
     {
-        titlebar.setTitleText(R.string.app_name);
-        titlebar.setRight1Text(R.string.hello_world);
-        titlebar.setRight1Visible();
-    }
-
-    @Override protected View getLoadingView()
-    {
-        return mRelativeLayout;
+        titlebar.setTitleText(R.string.test);
     }
 
     @Override protected void onInit(Bundle savedInstanceState)
     {
-        mFMultiClick = new FMultiClick(3, 1500, new onActivateListener()
+        initData();
+        initView();
+    }
+
+    @Override protected void loadData()
+    {
+        mMainModel.sendGetActivitesRequest();
+    }
+
+    private void initData()
+    {
+        mMainModel = new MainModel(this);
+        mMainAdapter = new MainAdapter(mMainModel.getActivities(), R.layout.listitem_main);
+        mOnFLayoutLoaderClickListener = new onFLayoutLoaderClickListener()
         {
-            @Override public void onActivate()
+            @Override public void onLoadingClick(View v)
             {
-                FToast.showShort("show");
+                loadData();
+            }
+        };
+    }
+
+    private void initView()
+    {
+        mLvActivities.setAdapter(mMainAdapter);
+        mLvActivities.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                Intent intent = mMainModel.getActivities().get(position).intent;
+                startActivity(intent);
             }
         });
     }
 
-    @Override protected void reloadData()
+    @Override public void onActivityCount(int count)
     {
+        FToast.showLong("Activity count is: " + count);
     }
 
-    @OnClick(R.id.textview) public void onClick()
+    @Override public void onActivityPreExecute()
     {
-        mFMultiClick.onClick();
+        //choose one of the following functions to show a loading.
+        //No.1 layout loading
+        mRlParentLayout.showLoading();
+        //No.2 dialog loading
+        showLoadingDialog(new DialogInterface.OnCancelListener()
+        {
+            @Override public void onCancel(DialogInterface dialog)
+            {
+                FToast.showShort("loading dialog is canceled.");
+            }
+        });
     }
 
-    @Override protected void onTitlebarRight1Click(View v)
+    @Override public void onActivitySuccessData()
     {
-        super.onTitlebarRight1Click(v);
-        FToast.showShort("right");
-        PaycodeTimer.getInstance().stop();
+        mRlParentLayout.showSuccess();
+        mMainAdapter.notifyDataSetChanged(mMainModel.getActivities());
+    }
+
+    @Override public void onActivitySuccessEmpty()
+    {
+        mRlParentLayout.showEmpty(mOnFLayoutLoaderClickListener);
+    }
+
+    @Override public void onActivityFailed()
+    {
+        mRlParentLayout.showError(mOnFLayoutLoaderClickListener);
+    }
+
+    @Override public void onActivityAfterExecute()
+    {
+        //choose one of the following functions to hide the loading.(@ onActivityPreExecute choose)
+        //No.1 layout hide
+        mRlParentLayout.hideLoading();
+        //No.2 dialog hide
+        dismissLoadingDialog();
+    }
+
+    @Override public void onBackPressed()
+    {
+        finishWithLoading(mRlParentLayout, mOnFLayoutLoaderClickListener);
+    }
+
+    @Override protected void onTitlebarLeft1Click(View v)
+    {
+        finishWithLoading(mRlParentLayout, mOnFLayoutLoaderClickListener);
     }
 }

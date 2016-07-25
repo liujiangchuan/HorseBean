@@ -1,7 +1,6 @@
 package com.ll.horsebean.demo;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.ll.horsebean.R;
@@ -38,11 +37,6 @@ public class BannerActivity extends FBaseActivity
         titlebar.setTitleText(getClass().getName());
     }
 
-    @Override protected View getLoadingView()
-    {
-        return null;
-    }
-
     @Override protected void onInit(Bundle savedInstanceState)
     {
         mActivityMainFragment = (FCycleViewPager) getSupportFragmentManager()
@@ -77,7 +71,7 @@ public class BannerActivity extends FBaseActivity
         //        mActivityMainFragment.setIndicatorCenter();
     }
 
-    @Override protected void reloadData()
+    @Override protected void loadData()
     {
 
     }

@@ -3,36 +3,69 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
+    <com.ll.services.view.titlebar.FTitlebarBtn
         android:id="@+id/f_titlebar_left1"
-        android:layout_width="@dimen/f_titlebar_btn_width"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="@drawable/f_selector_transparent"
-        android:scaleType="fitXY"
-        android:src="@drawable/f_titlebar_back"/>
+        android:drawableLeft="@drawable/f_titlebar_back"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="@string/f_back"
+        android:textColor="@color/f_titlebar_btn_text"
+        android:textSize="@dimen/h7"/>
+
+    <com.ll.services.view.titlebar.FTitlebarBtn
+        android:id="@+id/f_titlebar_left2"
+        android:layout_width="@dimen/f_titlebar_btn_width"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/f_titlebar_left1"
+        android:background="@drawable/f_selector_transparent"
+        android:gravity="center"
+        android:textColor="@color/f_titlebar_btn_text"
+        android:textSize="@dimen/h7"
+        android:visibility="gone"
+        tools:text="按钮l2"
+        tools:visibility="visible"/>
 
     <TextView
         android:id="@+id/f_titlebar_text"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_marginLeft="@dimen/f_titlebar_btn_width2"
+        android:layout_marginRight="@dimen/f_titlebar_btn_width2"
         android:ellipsize="marquee"
         android:gravity="center"
         android:singleLine="true"
         android:textColor="@color/f_titlebar_text"
-        android:textSize="@dimen/h2"
+        android:textSize="@dimen/h5"
         tools:text="title"/>
 
-    <TextView
+    <com.ll.services.view.titlebar.FTitlebarBtn
         android:id="@+id/f_titlebar_right1"
         android:layout_width="@dimen/f_titlebar_btn_width"
         android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
         android:background="@drawable/f_selector_transparent"
         android:gravity="center"
-        android:singleLine="true"
         android:textColor="@color/f_titlebar_btn_text"
-        android:textSize="@dimen/h5"
+        android:textSize="@dimen/h7"
         android:visibility="invisible"
-        tools:text="按钮"
+        tools:text="按钮r1"
+        tools:visibility="visible"/>
+
+    <com.ll.services.view.titlebar.FTitlebarBtn
+        android:id="@+id/f_titlebar_right2"
+        android:layout_width="@dimen/f_titlebar_btn_width"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/f_titlebar_right1"
+        android:background="@drawable/f_selector_transparent"
+        android:gravity="center"
+        android:textColor="@color/f_titlebar_btn_text"
+        android:textSize="@dimen/h7"
+        android:visibility="invisible"
+        tools:text="按钮r2"
         tools:visibility="visible"/>
 </merge>

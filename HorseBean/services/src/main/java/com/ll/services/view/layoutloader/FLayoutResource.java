@@ -3,11 +3,8 @@ package com.ll.services.view.layoutloader;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 
-import com.ll.services.FApplication;
 import com.ll.services.R;
-import com.ll.services.imageload.FImageLoader;
 
 /**
  * Created by Liujc on 2016/4/26.
@@ -80,9 +77,9 @@ public class FLayoutResource implements IFLayoutResource
         if (null == mLoadingLayout)
         {
             mLoadingLayout = mLayoutInflater.inflate(getLoadingResource(), null);
-            FImageLoader.getInstance()
-                    .loadResGif(FApplication.getAppContext(), R.drawable.f_layout_loading,
-                            (ImageView) mLoadingLayout.findViewById(R.id.f_layout_loading_img));
+            //            FImageLoader.getInstance()
+            //                    .loadResGif(FApplication.getAppContext(), R.drawable.f_layout_loading,
+            //                            (ImageView) mLoadingLayout.findViewById(R.id.f_layout_loading_img));
         }
         return mLoadingLayout;
     }

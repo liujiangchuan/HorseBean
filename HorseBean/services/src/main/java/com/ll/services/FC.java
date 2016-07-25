@@ -13,6 +13,6 @@ public final class FC
 
     public static final class fHttp
     {
-        public static final int F_HTTP_RESPONSE_SUCCESS = 0;
+        public static final int F_HTTP_RESPONSE_SUCCESS = 200;
     }
 }

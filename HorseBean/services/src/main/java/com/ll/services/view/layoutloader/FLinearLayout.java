@@ -4,14 +4,17 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
+import com.ll.services.helper.FLog;
+
 /**
  * Created by Liujc on 2016/4/25.
  * Email liujiangchuan@hotmail.com
  */
 public class FLinearLayout extends LinearLayout implements IFLayoutLoader
 {
-    private LayoutParams mLayoutParams;
     private IFLayoutResource mIFLayoutResource;
+    private LayoutParams mLayoutParams;
+    private boolean mIsLoading;
 
     public FLinearLayout(Context context)
     {
@@ -33,33 +36,56 @@ public class FLinearLayout extends LinearLayout implements IFLayoutLoader
         }
     }
 
+    @Override public void showSuccess()
+    {
+        removeView(mIFLayoutResource.getEmptyView());
+        removeView(mIFLayoutResource.getErrorView());
+        FLog.i("showSuccess");
+    }
+
     @Override public void showEmpty(onFLayoutLoaderClickListener fLayoutLoaderClickListener)
     {
         mIFLayoutResource.setEmptyClickListener(fLayoutLoaderClickListener);
+        removeView(mIFLayoutResource.getEmptyView());
         removeView(mIFLayoutResource.getErrorView());
-        removeView(mIFLayoutResource.getLoadingView());
         addView(mIFLayoutResource.getEmptyView(), 0, mLayoutParams);
+        FLog.i("showEmpty");
     }
 
     @Override public void showError(onFLayoutLoaderClickListener fLayoutLoaderClickListener)
     {
         mIFLayoutResource.setErrorClickListener(fLayoutLoaderClickListener);
         removeView(mIFLayoutResource.getEmptyView());
-        removeView(mIFLayoutResource.getLoadingView());
+        removeView(mIFLayoutResource.getErrorView());
         addView(mIFLayoutResource.getErrorView(), 0, mLayoutParams);
+        FLog.i("showError");
     }
 
     @Override public void showLoading()
     {
+        mIsLoading = true;
         removeView(mIFLayoutResource.getEmptyView());
         removeView(mIFLayoutResource.getErrorView());
         addView(mIFLayoutResource.getLoadingView(), 0, mLayoutParams);
+        FLog.i("showLoading");
     }
 
-    @Override public void hide()
+    @Override public void hideLoading()
     {
-        removeView(mIFLayoutResource.getEmptyView());
-        removeView(mIFLayoutResource.getErrorView());
+        mIsLoading = false;
         removeView(mIFLayoutResource.getLoadingView());
+        FLog.i("hideLoading");
+    }
+
+    @Override public boolean cancelLoading(onFLayoutLoaderClickListener fLayoutLoaderClickListener)
+    {
+        boolean ret = mIsLoading;
+        if (mIsLoading)
+        {
+            hideLoading();
+            showEmpty(fLayoutLoaderClickListener);
+        }
+        FLog.i("cancelLoading: " + ret);
+        return ret;
     }
 }

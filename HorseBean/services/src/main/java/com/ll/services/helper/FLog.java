@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.ll.services.FConfig;
 import com.ll.services.storage.FLogStorage;
-import com.ll.services.util.FFileUtil;
 import com.ll.services.util.FTimeUtil;
 
 /**
@@ -136,7 +135,7 @@ public class FLog
         if (null != path)
         {
             String log = "[" + FTimeUtil.getCurrentTime() + "] " + tag + ": " + msg;
-            FFileUtil.write2File(path, log, true);
+//            FFileUtil.write2File(path, log, true);
         }
     }
 }

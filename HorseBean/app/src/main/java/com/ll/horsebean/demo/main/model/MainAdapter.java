@@ -3,29 +3,27 @@ package com.ll.horsebean.demo.main.model;
 import android.widget.TextView;
 
 import com.ll.horsebean.R;
-import com.ll.services.adapter.FBaseAdapter;
-import com.ll.services.adapter.ViewHolder;
-import com.ll.services.http.FHttpBean;
+import com.ll.horsebean.demo.main.model.bean.ActivityBean;
+import com.ll.services.view.scrollview.FBaseAdapter;
+import com.ll.services.view.scrollview.ViewHolder;
 
 import java.util.List;
 
 /**
- * Created by User on 2016/4/25.
+ * Created by Liujc on 2016/5/25.
+ * Email liujiangchuan@hotmail.com
  */
-public class MainAdapter extends FBaseAdapter<FHttpBean>
+public class MainAdapter extends FBaseAdapter<ActivityBean>
 {
-    public MainAdapter(List<FHttpBean> listData, int layoutId)
+    public MainAdapter(List<ActivityBean> listData, int layoutId)
     {
         super(listData, layoutId);
     }
 
     @Override protected void fillData(ViewHolder holder, int position)
     {
-        //get view
-        TextView test = holder.getView(R.id.f_titlebar_id);
-        //get data
-        FHttpBean bean = mListData.get(position);
-        //set
-        test.setText(bean.toString());
+        TextView tvActivity = holder.getView(R.id.tv_activity_name);
+        ActivityBean activityBean = mListData.get(position);
+        tvActivity.setText(activityBean.activityName);
     }
 }

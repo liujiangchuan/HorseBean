@@ -2,11 +2,11 @@
 <resources>
 
     <style name="FTitlebarBackground">
-        <item name="android:background">@color/light_blue</item>
+        <item name="android:background">@color/f_titlebar_background</item>
     </style>
 
     <style name="FBaseAppTheme" parent="android:Theme">
         <item name="android:windowTitleBackgroundStyle">@style/FTitlebarBackground</item>
-        <item name="android:windowTitleSize">45dp</item>
+        <item name="android:windowTitleSize">@dimen/f_titlebar_height</item>
     </style>
 </resources>

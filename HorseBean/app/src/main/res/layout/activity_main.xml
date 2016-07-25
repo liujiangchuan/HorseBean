@@ -1,43 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.ll.services.view.layoutloader.FRelativeLayout
+    android:id="@+id/rl_parent_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"/>
-
-    <com.ll.services.view.layoutloader.FLinearLayout
-        android:id="@+id/relativelayout"
+    <ListView
+        android:id="@+id/lv_activities"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/textview"
-        android:layout_marginTop="30dp"
-        android:background="@color/green"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/t1"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:gravity="center"
-            android:text="asdjifosdfjiosaf"
-            android:textColor="@color/black"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="asjdiofsjdifosajdf"
-            android:textColor="@color/black"/>
-
-    </com.ll.services.view.layoutloader.FLinearLayout>
+        android:divider="@color/white"
+        android:dividerHeight="2px"/>
 </com.ll.services.view.layoutloader.FRelativeLayout>

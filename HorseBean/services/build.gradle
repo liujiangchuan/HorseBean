@@ -24,8 +24,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-//    testCompile 'junit:junit:4.12'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    //    testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.0'
     compile(name: 'leakcanary-android-1.4-beta2', ext: 'aar')
+    compile 'com.android.support:recyclerview-v7:23.0.0'
 }

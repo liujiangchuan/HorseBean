@@ -1,4 +1,4 @@
-package com.ll.services.adapter;
+package com.ll.services.view.scrollview;
 
 import android.view.View;
 import android.view.ViewGroup;

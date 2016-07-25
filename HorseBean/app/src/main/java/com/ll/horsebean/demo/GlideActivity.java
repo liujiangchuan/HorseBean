@@ -1,12 +1,10 @@
 package com.ll.horsebean.demo;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.ll.horsebean.R;
-import com.ll.services.imageload.FImageLoader;
 import com.ll.services.ui.FBaseActivity;
 import com.ll.services.view.titlebar.IFTitlebar;
 
@@ -27,17 +25,11 @@ public class GlideActivity extends FBaseActivity
         titlebar.setTitleText(getClass().getName());
     }
 
-    @Override protected View getLoadingView()
-    {
-        return null;
-    }
-
     @Override protected void onInit(Bundle savedInstanceState)
     {
-        reloadData();
     }
 
-    @Override protected void reloadData()
+    @Override protected void loadData()
     {
         String url = "http://img1.ph.126.net/gGRsUgEni_P9xFrirRs2Ww==/6630801683887325749.jpg";
         Glide.with(this).load(url).placeholder(R.mipmap.ic_launcher).into(mActivityGlideImg1);
@@ -45,7 +37,5 @@ public class GlideActivity extends FBaseActivity
 
     @OnClick(R.id.activity_glide_img1) public void onClick()
     {
-        FImageLoader.getInstance()
-                .loadResGif(this, R.drawable.f_layout_loading, mActivityGlideImg1);
     }
 }

@@ -32,11 +32,6 @@ public class FWebViewActivity extends FBaseActivity
         titlebar.setTitleText(FWebViewIntent.getTitle(getIntent()));
     }
 
-    @Override protected View getLoadingView()
-    {
-        return null;
-    }
-
     @Override protected void onInit(Bundle savedInstanceState)
     {
         mWebviewPb = (ProgressBar) this.findViewById(R.id.f_activity_webview_pb);
@@ -49,7 +44,7 @@ public class FWebViewActivity extends FBaseActivity
         this.mWebView.loadUrl(FWebViewIntent.getUrl(getIntent()));
     }
 
-    @Override protected void reloadData()
+    @Override protected void loadData()
     {
     }
 

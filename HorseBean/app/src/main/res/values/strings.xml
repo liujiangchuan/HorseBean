@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HorseBean</string>
+    <string name="test">测试页面</string>
 </resources>

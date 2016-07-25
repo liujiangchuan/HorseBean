@@ -3,6 +3,7 @@
     <!-- title bar -->
     <color name="f_titlebar_text">@android:color/white</color>
     <color name="f_titlebar_btn_text">@android:color/white</color>
+    <color name="f_titlebar_background">#03a9f4</color>
 
     <!-- common -->
     <color name="f_transparent_1a">#1a000000</color>

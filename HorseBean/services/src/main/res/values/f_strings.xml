@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Services</string>
+    <string name="f_empty_data">对不起，暂无数据！</string>
+    <string name="f_error_data">对不起，数据异常！</string>
+    <string name="f_reload_data">重新加载</string>
+    <string name="f_back">返回</string>
 </resources>

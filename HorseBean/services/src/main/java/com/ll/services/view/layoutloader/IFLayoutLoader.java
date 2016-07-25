@@ -8,11 +8,15 @@ public interface IFLayoutLoader
 {
     void setLayoutResource(IFLayoutResource ifLayoutResource);
 
+    void showSuccess();
+
     void showEmpty(onFLayoutLoaderClickListener loadingClickListener);
 
     void showError(onFLayoutLoaderClickListener loadingClickListener);
 
     void showLoading();
 
-    void hide();
+    void hideLoading();
+
+    boolean cancelLoading(onFLayoutLoaderClickListener fLayoutLoaderClickListener);
 }
