@@ -1,4 +1,4 @@
-package com.ll.horsebean.demo;
+package com.ll.horsebean.demo.database.activity;
 
 import android.app.Activity;
 import android.os.Bundle;

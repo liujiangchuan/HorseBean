@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,13 +18,18 @@ public abstract class FBaseAdapter<T> extends BaseAdapter
 
     public FBaseAdapter(List<T> listData, int layoutId)
     {
-        this.mListData = listData;
+        mListData = new ArrayList<>();
+        if (null != listData)
+        {
+            mListData.addAll(listData);
+        }
         this.mLayoutId = layoutId;
     }
 
     public void notifyDataSetChanged(List<T> listData)
     {
-        mListData = listData;
+        mListData.clear();
+        mListData.addAll(listData);
         notifyDataSetChanged();
     }
 

@@ -20,11 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".demo.DatabaseActivity"/>
-        <activity android:name=".demo.HttpActivity"/>
-        <activity android:name=".demo.BannerActivity"/>
-        <activity android:name=".demo.GlideActivity"/>
-        <activity android:name=".demo.RecyclerViewActivity"/>
+        <activity android:name=".demo.database.activity.DatabaseActivity"/>
+        <activity android:name=".demo.http.activity.HttpActivity"/>
+        <activity android:name=".demo.banner.activity.BannerActivity"/>
+        <activity android:name=".demo.imageloader.activity.GlideActivity"/>
+        <activity android:name=".demo.recyclerview.activity.RecyclerViewActivity"/>
 
         <meta-data
             android:name="CHANNEL"

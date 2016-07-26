@@ -1,4 +1,4 @@
-package com.ll.horsebean.demo;
+package com.ll.horsebean.demo.banner.activity;
 
 import android.os.Bundle;
 import android.widget.ImageView;
