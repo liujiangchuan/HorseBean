@@ -9,7 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by User on 2016/4/15.
+ * Created by Liujc on 2016/8/17.
+ * Email: liujiangchuan@hotmail.com
  */
 public class HttpGetOrderListRequest extends HttpRequest
 {

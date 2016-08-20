@@ -13,7 +13,7 @@ import java.util.TimerTask;
  * Created by Liujc on 2016/4/26.
  * Email liujiangchuan@hotmail.com
  */
-public abstract class FCountdownTimer implements ICountdownTimer
+public abstract class FCountdownTimer implements IFCountdownTimer
 {
     private long mTime;
     private long mPeriod;
@@ -53,7 +53,7 @@ public abstract class FCountdownTimer implements ICountdownTimer
         };
     }
 
-    public ICountdownTimer setTimerListener(onFCountdownTimerListener listener)
+    public IFCountdownTimer setTimerListener(onFCountdownTimerListener listener)
     {
         mOnFCountdownTimerListener = listener;
         return this;

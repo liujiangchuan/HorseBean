@@ -7,6 +7,10 @@ import com.ll.services.FApplication;
 import com.ll.services.FConfig;
 import com.ll.services.helper.FLog;
 
+/**
+ * Created by Liujc on 2016/8/17.
+ * Email: liujiangchuan@hotmail.com
+ */
 public final class MyConfig
 {
     //channel

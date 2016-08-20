@@ -11,16 +11,16 @@ public class FMultiClick
     //params
     private int mClickTimes;
     private int mMillionSeconds;
-    private onActivateListener mOnActivateListener;
+    private onFActivateListener mOnFActivateListener;
     //
     private Runnable mRunnable;
     private int mCount;
 
-    public FMultiClick(int clickTimes, int millionSeconds, onActivateListener listener)
+    public FMultiClick(int clickTimes, int millionSeconds, onFActivateListener listener)
     {
         mClickTimes = clickTimes;
         mMillionSeconds = millionSeconds;
-        mOnActivateListener = listener;
+        mOnFActivateListener = listener;
         initRunnable();
     }
 
@@ -44,7 +44,7 @@ public class FMultiClick
         mCount++;
         if (mClickTimes == mCount)
         {
-            mOnActivateListener.onActivate();
+            mOnFActivateListener.onActivate();
         }
     }
 }

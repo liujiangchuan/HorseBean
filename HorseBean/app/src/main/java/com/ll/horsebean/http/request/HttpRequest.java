@@ -6,7 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Administrator on 2016/4/20.
+ * Created by Liujc on 2016/8/17.
+ * Email: liujiangchuan@hotmail.com
  */
 public abstract class HttpRequest extends FHttpBaseRequest
 {

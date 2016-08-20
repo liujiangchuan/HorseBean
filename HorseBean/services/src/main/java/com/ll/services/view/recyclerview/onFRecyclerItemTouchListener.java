@@ -9,12 +9,12 @@ import android.view.View;
  * Created by Liujc on 2016/7/26.
  * Email liujiangchuan@hotmail.com
  */
-public class FOnRecyclerItemTouchListener implements RecyclerView.OnItemTouchListener
+public class onFRecyclerItemTouchListener implements RecyclerView.OnItemTouchListener
 {
     private OnItemClickListener mClickListener;
     private GestureDetector mGestureDetector;
 
-    public FOnRecyclerItemTouchListener(final RecyclerView recyclerView,
+    public onFRecyclerItemTouchListener(final RecyclerView recyclerView,
                                         final OnItemClickListener listener)
     {
         mClickListener = listener;

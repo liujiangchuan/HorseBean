@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.ll.horsebean.R;
-import com.ll.services.ui.FBaseActivity;
+import com.ll.horsebean.common.DemoBaseActivity;
 import com.ll.services.ui.FWebViewIntent;
 import com.ll.services.view.cycleviewpager.FCycleViewPager;
-import com.ll.services.view.cycleviewpager.onCycleImageClickListener;
+import com.ll.services.view.cycleviewpager.onFCycleImageClickListener;
 import com.ll.services.view.titlebar.IFTitlebar;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import java.util.List;
  * Created by Liujc on 2016/5/8.
  * Email liujiangchuan@hotmail.com
  */
-public class BannerActivity extends FBaseActivity
+public class BannerActivity extends DemoBaseActivity
 {
     FCycleViewPager mActivityMainFragment;
     private String[] imageUrls =
@@ -55,7 +55,7 @@ public class BannerActivity extends FBaseActivity
         mActivityMainFragment.setCycle(true);
 
         // 在加载数据前设置是否循环
-        mActivityMainFragment.setData(views, new onCycleImageClickListener()
+        mActivityMainFragment.setData(views, new onFCycleImageClickListener()
         {
             @Override public void onCycleImageClick(int pos)
             {

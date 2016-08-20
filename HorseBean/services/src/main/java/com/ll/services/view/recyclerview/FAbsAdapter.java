@@ -10,7 +10,7 @@ import com.ll.services.helper.FLog;
  * Created by Liujc on 2016/7/25.
  * Email liujiangchuan@hotmail.com
  */
-public abstract class FAbsAdapter<M, VH extends ViewHolder> extends RecyclerView.Adapter<ViewHolder>
+public abstract class FAbsAdapter<M, VH extends FViewHolder> extends RecyclerView.Adapter<FViewHolder>
 {
     public static final int VIEW_TYPE_HEADER = 1;
     public static final int VIEW_TYPE_FOOTER = 2;
@@ -18,20 +18,20 @@ public abstract class FAbsAdapter<M, VH extends ViewHolder> extends RecyclerView
     protected View headerView;
     protected View footerView;
 
-    @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+    @Override public FViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         switch (viewType)
         {
             case VIEW_TYPE_HEADER:
-                return new ViewHolder(headerView);
+                return new FViewHolder(headerView);
             case VIEW_TYPE_FOOTER:
-                return new ViewHolder(footerView);
+                return new FViewHolder(footerView);
             default:
                 return createCustomViewHolder(parent, viewType);
         }
     }
 
-    @Override public void onBindViewHolder(ViewHolder holder, int position)
+    @Override public void onBindViewHolder(FViewHolder holder, int position)
     {
         switch (holder.getItemViewType())
         {

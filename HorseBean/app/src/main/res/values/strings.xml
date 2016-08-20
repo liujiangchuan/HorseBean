@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">HorseBean</string>
-    <string name="test">测试页面</string>
+    <string name="test">TEST PAGE</string>
+    <string name="input_hint">INPUT ANYTHING...</string>
+    <string name="save">SAVE</string>
+    <string name="ok">OK</string>
+    <string name="cancel">CANCEL</string>
 </resources>

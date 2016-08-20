@@ -7,6 +7,10 @@ import com.ll.horsebean.db.framework.DaoMaster;
 import com.ll.horsebean.db.framework.DaoMaster.OpenHelper;
 import com.ll.horsebean.db.framework.DaoSession;
 
+/**
+ * Created by Liujc on 2016/8/17.
+ * Email: liujiangchuan@hotmail.com
+ */
 public class DaoCreator
 {
 	private static final String PATH = "database.db";

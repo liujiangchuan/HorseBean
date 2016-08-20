@@ -32,7 +32,7 @@ public class FCycleViewPager extends FBaseFragment implements ViewPager.OnPageCh
     private FViewPager mFCycleViewpagerContentViewpager;
     private LinearLayout mFCycleViewpagerContentIndicator;
     //
-    private onCycleImageClickListener mOnCycleImageClickListener;
+    private onFCycleImageClickListener mOnFCycleImageClickListener;
     private List<ImageView> mImageViews = new ArrayList<>();
     private ImageView[] mIndicators;
     private boolean mIsCycle;
@@ -84,9 +84,9 @@ public class FCycleViewPager extends FBaseFragment implements ViewPager.OnPageCh
         return imageView;
     }
 
-    public void setData(List<ImageView> views, onCycleImageClickListener listener)
+    public void setData(List<ImageView> views, onFCycleImageClickListener listener)
     {
-        mOnCycleImageClickListener = listener;
+        mOnFCycleImageClickListener = listener;
         mImageViews.clear();
 
         if (views.size() == 0)
@@ -171,14 +171,14 @@ public class FCycleViewPager extends FBaseFragment implements ViewPager.OnPageCh
         @Override public View instantiateItem(ViewGroup container, final int position)
         {
             ImageView v = mImageViews.get(position);
-            if (mOnCycleImageClickListener != null)
+            if (mOnFCycleImageClickListener != null)
             {
                 v.setOnClickListener(new View.OnClickListener()
                 {
 
                     @Override public void onClick(View v)
                     {
-                        mOnCycleImageClickListener.onCycleImageClick(mCurrentPosition);
+                        mOnFCycleImageClickListener.onCycleImageClick(mCurrentPosition);
                     }
                 });
             }

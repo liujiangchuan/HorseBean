@@ -7,7 +7,8 @@ import com.ll.services.http.FHttpManager;
 import com.ll.services.http.FHttpModelCallback;
 
 /**
- * Created by Administrator on 2016/4/22.
+ * Created by Liujc on 2016/8/17.
+ * Email: liujiangchuan@hotmail.com
  */
 public class HttpOrderListModel extends FHttpBaseModel
 {

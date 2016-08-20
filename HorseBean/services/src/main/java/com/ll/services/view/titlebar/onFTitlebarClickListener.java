@@ -6,7 +6,7 @@ import android.view.View;
  * Created by Liujc on 2016/4/25.
  * Email liujiangchuan@hotmail.com
  */
-public interface onTitlebarClickListener
+public interface onFTitlebarClickListener
 {
     void onLeft1Click(View v);
 

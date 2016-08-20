@@ -13,7 +13,8 @@ import com.ll.services.util.FAppUtil;
 
 
 /**
- * Created by Administrator on 2016/3/30.
+ * Created by Liujc on 2016/8/17.
+ * Email: liujiangchuan@hotmail.com
  */
 public class MyApp extends FApplication
 {

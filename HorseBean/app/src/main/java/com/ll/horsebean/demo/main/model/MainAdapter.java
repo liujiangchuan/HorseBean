@@ -5,7 +5,7 @@ import android.widget.TextView;
 import com.ll.horsebean.R;
 import com.ll.horsebean.demo.main.model.bean.ActivityBean;
 import com.ll.services.view.scrollview.FBaseAdapter;
-import com.ll.services.view.scrollview.ViewHolder;
+import com.ll.services.view.scrollview.FViewHolder;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class MainAdapter extends FBaseAdapter<ActivityBean>
         super(listData, layoutId);
     }
 
-    @Override protected void fillData(ViewHolder holder, int position)
+    @Override protected void fillData(FViewHolder holder, int position)
     {
         TextView tvActivity = holder.getView(R.id.tv_activity_name);
         ActivityBean activityBean = mListData.get(position);

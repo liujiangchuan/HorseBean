@@ -10,25 +10,25 @@ import com.ll.services.FApplication;
  * Created by Liujc on 2016/4/25.
  * Email liujiangchuan@hotmail.com
  */
-public class ViewHolder
+public class FViewHolder
 {
     private SparseArray mViews;
     private View mConvertView;
 
-    public ViewHolder(int layoutId)
+    public FViewHolder(int layoutId)
     {
         mViews = new SparseArray();
         mConvertView = LayoutInflater.from(FApplication.getAppContext()).inflate(layoutId, null);
         mConvertView.setTag(this);
     }
 
-    public static ViewHolder getViewHolder(View convertView, int layoutId)
+    public static FViewHolder getViewHolder(View convertView, int layoutId)
     {
         if (convertView == null)
         {
-            return new ViewHolder(layoutId);
+            return new FViewHolder(layoutId);
         }
-        return (ViewHolder) convertView.getTag();
+        return (FViewHolder) convertView.getTag();
     }
 
     public <T extends View> T getView(int viewId)

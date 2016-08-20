@@ -18,6 +18,10 @@ import com.ll.services.view.titlebar.IFTitlebar;
 
 import butterknife.Bind;
 
+/**
+ * Created by Liujc on 2016/8/17.
+ * Email: liujiangchuan@hotmail.com
+ */
 public class MainActivity extends DemoBaseActivity implements IMainActivity
 {
     //view
@@ -36,6 +40,7 @@ public class MainActivity extends DemoBaseActivity implements IMainActivity
     @Override protected void initTitlebar(IFTitlebar titlebar)
     {
         titlebar.setTitleText(R.string.test);
+        titlebar.getLeft1().setBtnInvisible();
     }
 
     @Override protected void onInit(Bundle savedInstanceState)

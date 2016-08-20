@@ -16,7 +16,7 @@ import com.ll.services.helper.FStrictModeWrapper;
 import com.ll.services.ui.dialog.FLoadingDialog;
 import com.ll.services.view.titlebar.FTitlebar;
 import com.ll.services.view.titlebar.IFTitlebar;
-import com.ll.services.view.titlebar.onTitlebarClickListener;
+import com.ll.services.view.titlebar.onFTitlebarClickListener;
 
 import butterknife.ButterKnife;
 
@@ -146,7 +146,7 @@ public abstract class FBaseActivity extends FragmentActivity
             FTitlebar fTitlebar = (FTitlebar) findViewById(R.id.f_titlebar_id);
             if (null != fTitlebar)
             {
-                fTitlebar.setOnTitlebarClickListener(new onTitlebarClickListener()
+                fTitlebar.setOnTitlebarClickListener(new onFTitlebarClickListener()
                 {
                     @Override public void onLeft1Click(View v)
                     {

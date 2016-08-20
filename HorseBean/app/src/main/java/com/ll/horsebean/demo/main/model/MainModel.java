@@ -84,7 +84,8 @@ public class MainModel
         mList = new ArrayList<>();
         ActivityInfo[] activityInfos = packageInfo.activities;
         int activityLength = activityInfos.length;
-        mIMainActivity.onActivityCount(activityLength);
+        int exceptActivityLength = mExceptActivities.length;
+        mIMainActivity.onActivityCount(activityLength - exceptActivityLength);
         if (activityLength <= 0)
         {
             mIMainActivity.onActivitySuccessEmpty();

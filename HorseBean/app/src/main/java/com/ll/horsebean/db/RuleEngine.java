@@ -10,6 +10,10 @@ import com.ll.services.util.FFileUtil;
 
 import java.util.List;
 
+/**
+ * Created by Liujc on 2016/8/17.
+ * Email: liujiangchuan@hotmail.com
+ */
 public class RuleEngine
 {
 	private static final String PATH = "databaseRules.txt";

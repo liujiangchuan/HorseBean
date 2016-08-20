@@ -7,8 +7,9 @@ import java.util.List;
  * Created by Liujc on 2016/7/25.
  * Email liujiangchuan@hotmail.com
  */
-public abstract class FBaseAdapter<M, VH extends ViewHolder> extends FAbsAdapter<M, VH>
+public abstract class FBaseAdapter<M, VH extends FViewHolder> extends FAbsAdapter<M, VH>
 {
+    //Encapsulate data list, and use the ADAPTER to operate data.
     private List<M> mDataList;
 
     public FBaseAdapter(List<M> list)

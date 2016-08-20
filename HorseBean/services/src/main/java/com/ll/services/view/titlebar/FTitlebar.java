@@ -22,7 +22,7 @@ public class FTitlebar extends RelativeLayout implements IFTitlebar
     private FTitlebarBtn mFTitlebarRight1;
     private FTitlebarBtn mFTitlebarRight2;
 
-    private onTitlebarClickListener mClickListener;
+    private onFTitlebarClickListener mClickListener;
 
     public FTitlebar(Context context)
     {
@@ -109,7 +109,7 @@ public class FTitlebar extends RelativeLayout implements IFTitlebar
         });
     }
 
-    public void setOnTitlebarClickListener(onTitlebarClickListener listener)
+    public void setOnTitlebarClickListener(onFTitlebarClickListener listener)
     {
         mClickListener = listener;
     }

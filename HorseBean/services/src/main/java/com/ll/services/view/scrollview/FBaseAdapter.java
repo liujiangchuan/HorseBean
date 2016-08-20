@@ -50,10 +50,10 @@ public abstract class FBaseAdapter<T> extends BaseAdapter
 
     @Override public View getView(int position, View convertView, ViewGroup parent)
     {
-        ViewHolder holder = ViewHolder.getViewHolder(convertView, mLayoutId);
+        FViewHolder holder = FViewHolder.getViewHolder(convertView, mLayoutId);
         fillData(holder, position);
         return holder.getMConvertView();
     }
 
-    protected abstract void fillData(ViewHolder holder, int position);
+    protected abstract void fillData(FViewHolder holder, int position);
 }
