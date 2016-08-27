@@ -29,4 +29,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.2.0'
     compile(name: 'leakcanary-android-1.4-beta2', ext: 'aar')
     compile 'com.android.support:recyclerview-v7:23.0.0'
+    compile 'io.reactivex:rxjava:1.1.8'
+    compile 'io.reactivex:rxandroid:1.2.1'
 }

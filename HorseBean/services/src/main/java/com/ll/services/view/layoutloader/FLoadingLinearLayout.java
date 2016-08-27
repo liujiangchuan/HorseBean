@@ -10,18 +10,18 @@ import com.ll.services.helper.FLog;
  * Created by Liujc on 2016/4/25.
  * Email liujiangchuan@hotmail.com
  */
-public class FLinearLayout extends LinearLayout implements IFLayoutLoader
+public class FLoadingLinearLayout extends LinearLayout implements IFLayoutLoader
 {
     private IFLayoutResource mIFLayoutResource;
     private LayoutParams mLayoutParams;
     private boolean mIsLoading;
 
-    public FLinearLayout(Context context)
+    public FLoadingLinearLayout(Context context)
     {
         this(context, null);
     }
 
-    public FLinearLayout(Context context, AttributeSet attrs)
+    public FLoadingLinearLayout(Context context, AttributeSet attrs)
     {
         super(context, attrs);
         mLayoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);

@@ -1,6 +1,6 @@
 package com.ll.services.tools.multiclick;
 
-import com.ll.services.ui.FBaseActivity;
+import com.ll.services.view.FBaseActivity;
 
 /**
  * Created by Liujc on 2016/5/17.

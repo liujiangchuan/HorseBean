@@ -14,7 +14,7 @@ import android.widget.RelativeLayout;
 
 import com.ll.services.R;
 import com.ll.services.imageload.FImageLoader;
-import com.ll.services.ui.FBaseFragment;
+import com.ll.services.view.FBaseFragment;
 import com.ll.services.view.FViewPager;
 
 import java.lang.ref.WeakReference;

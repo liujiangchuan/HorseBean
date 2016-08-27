@@ -1,4 +1,8 @@
-package com.ll.horsebean.demo.main.activity;
+package com.ll.horsebean.demo.main.view;
+
+import com.ll.horsebean.demo.main.model.bean.ActivityBean;
+
+import java.util.List;
 
 /**
  * Created by Liujc on 2016/5/26.
@@ -10,7 +14,7 @@ public interface IMainActivity
 
     void onActivityPreExecute();
 
-    void onActivitySuccessData();
+    void onActivitySuccessData(List<ActivityBean> list);
 
     void onActivitySuccessEmpty();
 

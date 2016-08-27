@@ -1,7 +1,6 @@
-package com.ll.horsebean.demo.main.activity;
+package com.ll.horsebean.demo.main.view;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,11 +9,14 @@ import android.widget.ListView;
 import com.ll.horsebean.R;
 import com.ll.horsebean.common.DemoBaseActivity;
 import com.ll.horsebean.demo.main.model.MainAdapter;
-import com.ll.horsebean.demo.main.model.MainModel;
+import com.ll.horsebean.demo.main.model.bean.ActivityBean;
+import com.ll.horsebean.demo.main.presenter.MainPresenter;
 import com.ll.services.tools.FToast;
-import com.ll.services.view.layoutloader.FRelativeLayout;
+import com.ll.services.view.layoutloader.FLodingRelativeLayout;
 import com.ll.services.view.layoutloader.onFLayoutLoaderClickListener;
 import com.ll.services.view.titlebar.IFTitlebar;
+
+import java.util.List;
 
 import butterknife.Bind;
 
@@ -26,11 +28,13 @@ public class MainActivity extends DemoBaseActivity implements IMainActivity
 {
     //view
     @Bind(R.id.lv_activities) ListView mLvActivities;
-    @Bind(R.id.rl_parent_layout) FRelativeLayout mRlParentLayout;
-    //data
-    private MainModel mMainModel;
+    @Bind(R.id.rl_parent_layout) FLodingRelativeLayout mRlParentLayout;
+    //presenter
+    private MainPresenter mPresenter;
+    //
     private MainAdapter mMainAdapter;
     private onFLayoutLoaderClickListener mOnFLayoutLoaderClickListener;
+    private boolean loadingType;
 
     @Override protected int getLayoutResource()
     {
@@ -49,15 +53,21 @@ public class MainActivity extends DemoBaseActivity implements IMainActivity
         initView();
     }
 
+    @Override protected void onStop()
+    {
+        super.onStop();
+        mPresenter.unsubscribe();
+    }
+
     @Override protected void loadData()
     {
-        mMainModel.sendGetActivitesRequest();
+        mPresenter.sendGetActivitesRequest();
     }
 
     private void initData()
     {
-        mMainModel = new MainModel(this);
-        mMainAdapter = new MainAdapter(mMainModel.getActivities(), R.layout.listitem_main);
+        mPresenter = new MainPresenter(this);
+        mMainAdapter = new MainAdapter(null, R.layout.listitem_main);
         mOnFLayoutLoaderClickListener = new onFLayoutLoaderClickListener()
         {
             @Override public void onLoadingClick(View v)
@@ -65,6 +75,7 @@ public class MainActivity extends DemoBaseActivity implements IMainActivity
                 loadData();
             }
         };
+        loadingType = true;
     }
 
     private void initView()
@@ -75,36 +86,41 @@ public class MainActivity extends DemoBaseActivity implements IMainActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                Intent intent = mMainModel.getActivities().get(position).intent;
-                startActivity(intent);
+                mPresenter.startActivity(position);
             }
         });
     }
 
     @Override public void onActivityCount(int count)
     {
-        FToast.showLong("Activity count is: " + count);
+        FToast.showShort("Activity count is: " + count);
     }
 
     @Override public void onActivityPreExecute()
     {
         //choose one of the following functions to show a loading.
-        //No.1 layout loading
-        mRlParentLayout.showLoading();
-        //No.2 dialog loading
-        showLoadingDialog(new DialogInterface.OnCancelListener()
+        if (loadingType)
         {
-            @Override public void onCancel(DialogInterface dialog)
+            //No.1 layout loading
+            mRlParentLayout.showLoading();
+        }
+        else
+        {
+            //No.2 dialog loading
+            showLoadingDialog(new DialogInterface.OnCancelListener()
             {
-                FToast.showShort("loading dialog is canceled.");
-            }
-        });
+                @Override public void onCancel(DialogInterface dialog)
+                {
+                    FToast.showShort("loading dialog is canceled.");
+                }
+            });
+        }
     }
 
-    @Override public void onActivitySuccessData()
+    @Override public void onActivitySuccessData(List<ActivityBean> list)
     {
         mRlParentLayout.showSuccess();
-        mMainAdapter.notifyDataSetChanged(mMainModel.getActivities());
+        mMainAdapter.notifyDataSetChanged(list);
     }
 
     @Override public void onActivitySuccessEmpty()
@@ -120,18 +136,19 @@ public class MainActivity extends DemoBaseActivity implements IMainActivity
     @Override public void onActivityAfterExecute()
     {
         //choose one of the following functions to hide the loading.(@ onActivityPreExecute choose)
-        //No.1 layout hide
-        mRlParentLayout.hideLoading();
-        //No.2 dialog hide
-        dismissLoadingDialog();
+        if (loadingType)
+        {
+            //No.1 layout hide
+            mRlParentLayout.hideLoading();
+        }
+        else
+        {
+            //No.2 dialog hide
+            dismissLoadingDialog();
+        }
     }
 
     @Override public void onBackPressed()
-    {
-        finishWithLoading(mRlParentLayout, mOnFLayoutLoaderClickListener);
-    }
-
-    @Override protected void onTitlebarLeft1Click(View v)
     {
         finishWithLoading(mRlParentLayout, mOnFLayoutLoaderClickListener);
     }

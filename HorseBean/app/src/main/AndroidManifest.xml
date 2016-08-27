@@ -12,7 +12,7 @@
         android:theme="@style/FBaseAppTheme">
 
         <activity
-            android:name=".demo.main.activity.MainActivity"
+            android:name=".demo.main.view.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -22,8 +22,8 @@
         </activity>
         <activity android:name=".demo.database.activity.DatabaseActivity"/>
         <activity android:name=".demo.http.activity.HttpActivity"/>
-        <activity android:name=".demo.banner.activity.BannerActivity"/>
-        <activity android:name=".demo.imageloader.activity.GlideActivity"/>
+        <activity android:name=".demo.ui.BannerActivity"/>
+        <activity android:name=".demo.ui.GlideActivity"/>
         <activity android:name=".demo.recyclerview.activity.RecyclerViewActivity"/>
 
         <meta-data

@@ -1,4 +1,4 @@
-package com.ll.services.ui;
+package com.ll.services.view;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import android.view.Window;
 import com.ll.services.R;
 import com.ll.services.helper.FLog;
 import com.ll.services.helper.FStrictModeWrapper;
-import com.ll.services.ui.dialog.FLoadingDialog;
+import com.ll.services.view.dialog.FLoadingDialog;
 import com.ll.services.view.titlebar.FTitlebar;
 import com.ll.services.view.titlebar.IFTitlebar;
 import com.ll.services.view.titlebar.onFTitlebarClickListener;

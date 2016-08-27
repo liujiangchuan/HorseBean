@@ -1,7 +1,7 @@
 package com.ll.services.http;
 
 import com.ll.services.helper.FLog;
-import com.ll.services.ui.FBaseActivity;
+import com.ll.services.view.FBaseActivity;
 
 /**
  * Created by Liujc on 2016/4/25.

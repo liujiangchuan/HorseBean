@@ -1,11 +1,11 @@
-package com.ll.horsebean.demo.banner.activity;
+package com.ll.horsebean.demo.ui;
 
 import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.ll.horsebean.R;
 import com.ll.horsebean.common.DemoBaseActivity;
-import com.ll.services.ui.FWebViewIntent;
+import com.ll.services.view.FWebViewIntent;
 import com.ll.services.view.cycleviewpager.FCycleViewPager;
 import com.ll.services.view.cycleviewpager.onFCycleImageClickListener;
 import com.ll.services.view.titlebar.IFTitlebar;

@@ -1,4 +1,4 @@
-package com.ll.horsebean.demo.imageloader.activity;
+package com.ll.horsebean.demo.ui;
 
 import android.os.Bundle;
 import android.widget.ImageView;

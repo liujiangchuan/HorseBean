@@ -1,4 +1,4 @@
-package com.ll.services.ui;
+package com.ll.services.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

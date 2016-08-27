@@ -10,18 +10,18 @@ import com.ll.services.helper.FLog;
  * Created by Liujc on 2016/4/25.
  * Email liujiangchuan@hotmail.com
  */
-public class FRelativeLayout extends RelativeLayout implements IFLayoutLoader
+public class FLodingRelativeLayout extends RelativeLayout implements IFLayoutLoader
 {
     private IFLayoutResource mIFLayoutResource;
     private LayoutParams mLayoutParams;
     private boolean mIsLoading;
 
-    public FRelativeLayout(Context context)
+    public FLodingRelativeLayout(Context context)
     {
         this(context, null);
     }
 
-    public FRelativeLayout(Context context, AttributeSet attrs)
+    public FLodingRelativeLayout(Context context, AttributeSet attrs)
     {
         super(context, attrs);
         mLayoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);

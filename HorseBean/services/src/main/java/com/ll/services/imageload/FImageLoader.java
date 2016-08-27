@@ -6,6 +6,7 @@ import android.widget.AbsListView;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ll.services.FApplication;
 import com.ll.services.R;
 import com.ll.services.helper.FLog;
@@ -180,8 +181,8 @@ public class FImageLoader
     public void loadResGif(Context context, int resId, ImageView imageView)
     {
         Uri uri = resourceIdToUri(context, resId);
-        Glide.with(context).load(uri).asGif().placeholder(R.drawable.default_img)
-                .error(R.drawable.default_img).into(imageView);
+        Glide.with(context).load(uri).asGif().diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .placeholder(R.drawable.default_img).error(R.drawable.default_img).into(imageView);
         FLog.i("Context=" + context.getClass().getName() + ", Uri=" + uri + ", ImageView=" +
                 imageView.toString());
     }

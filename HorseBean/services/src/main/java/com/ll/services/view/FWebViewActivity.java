@@ -1,4 +1,4 @@
-package com.ll.services.ui;
+package com.ll.services.view;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

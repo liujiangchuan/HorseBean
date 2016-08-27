@@ -1,4 +1,4 @@
-package com.ll.services.ui;
+package com.ll.services.view;
 
 import android.content.Intent;
 

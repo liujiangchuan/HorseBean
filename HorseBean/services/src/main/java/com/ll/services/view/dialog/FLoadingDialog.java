@@ -1,4 +1,4 @@
-package com.ll.services.ui.dialog;
+package com.ll.services.view.dialog;
 
 import android.app.AlertDialog;
 import android.content.Context;

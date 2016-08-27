@@ -1,6 +1,6 @@
 package com.ll.horsebean.common;
 
-import com.ll.services.ui.FBaseActivity;
+import com.ll.services.view.FBaseActivity;
 import com.ll.services.view.layoutloader.IFLayoutLoader;
 import com.ll.services.view.layoutloader.onFLayoutLoaderClickListener;
 
