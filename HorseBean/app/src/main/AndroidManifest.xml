@@ -24,7 +24,7 @@
         <activity android:name=".demo.http.activity.HttpActivity"/>
         <activity android:name=".demo.ui.BannerActivity"/>
         <activity android:name=".demo.ui.GlideActivity"/>
-        <activity android:name=".demo.recyclerview.activity.RecyclerViewActivity"/>
+        <activity android:name=".demo.recyclerview.view.RecyclerViewActivity"/>
 
         <meta-data
             android:name="CHANNEL"

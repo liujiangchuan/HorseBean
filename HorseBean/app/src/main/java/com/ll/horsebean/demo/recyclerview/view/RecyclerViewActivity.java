@@ -1,4 +1,4 @@
-package com.ll.horsebean.demo.recyclerview.activity;
+package com.ll.horsebean.demo.recyclerview.view;
 
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -60,6 +60,7 @@ public class RecyclerViewActivity extends DemoBaseActivity
                         FToast.showShort("pos: " + position);
                     }
                 }));
+        mRvView.addItemDecoration(new RecyclerDividerDecoration(this));
     }
 
     @Override protected void loadData()
