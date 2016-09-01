@@ -1,4 +1,4 @@
-package com.ll.horsebean.demo.recyclerview.view;
+package com.ll.horsebean.demo.recyclerview.activity;
 
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +9,7 @@ import com.ll.horsebean.R;
 import com.ll.horsebean.common.DemoBaseActivity;
 import com.ll.horsebean.demo.recyclerview.model.RecyclerViewAdapter;
 import com.ll.horsebean.demo.recyclerview.model.RecyclerViewModel;
+import com.ll.horsebean.demo.recyclerview.view.RecyclerDividerDecoration;
 import com.ll.services.tools.FToast;
 import com.ll.services.view.recyclerview.onFRecyclerItemTouchListener;
 import com.ll.services.view.titlebar.IFTitlebar;

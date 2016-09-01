@@ -3,7 +3,7 @@ package com.ll.horsebean.demo.main.presenter;
 import com.ll.horsebean.common.DemoBaseActivity;
 import com.ll.horsebean.demo.main.model.MainModel;
 import com.ll.horsebean.demo.main.model.bean.ActivityBean;
-import com.ll.horsebean.demo.main.view.IMainActivity;
+import com.ll.horsebean.demo.main.activity.IMainActivity;
 
 import java.util.List;
 

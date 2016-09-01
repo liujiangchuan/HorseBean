@@ -24,7 +24,7 @@ import rx.schedulers.Schedulers;
 public class MainModel
 {
     private List<ActivityBean> mList;
-    private final String[] EXCEPT_ACTIVITIES = {"com.ll.horsebean.demo.main.view.MainActivity",
+    private final String[] EXCEPT_ACTIVITIES = {"com.ll.horsebean.demo.main.activity.MainActivity",
             "com.ll.services.view.FWebViewActivity"};
 
     public Observable<List<ActivityBean>> reloadActivities()
@@ -50,7 +50,7 @@ public class MainModel
                     }
                 }
                 //wait some seconds for test loading in computation thread.
-                Thread.sleep(5000);
+                Thread.sleep(2000);
                 return mList;
             }
         }).subscribeOn(Schedulers.computation());

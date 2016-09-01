@@ -1,4 +1,4 @@
-package com.ll.horsebean.demo.main.view;
+package com.ll.horsebean.demo.main.activity;
 
 import com.ll.horsebean.demo.main.model.bean.ActivityBean;
 

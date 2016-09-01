@@ -12,13 +12,13 @@ import java.util.Map;
  * Created by Liujc on 2016/8/17.
  * Email: liujiangchuan@hotmail.com
  */
-public class HttpGetOrderListRequest extends HttpRequest
+public class HttpGetTestListRequest extends HttpRequest
 {
-    private final String URL = "https://github.com/hongyangAndroid";
+    private final String URL = "https://...";
     private final String P = "p";
     private Map<String, String> mParams;
 
-    private HttpGetOrderListRequest(ParamsBuilder builder)
+    private HttpGetTestListRequest(ParamsBuilder builder)
     {
         mParams = new HashMap<>();
         String p = builder.p;
@@ -38,9 +38,9 @@ public class HttpGetOrderListRequest extends HttpRequest
             return this;
         }
 
-        public HttpGetOrderListRequest build()
+        public HttpGetTestListRequest build()
         {
-            return new HttpGetOrderListRequest(this);
+            return new HttpGetTestListRequest(this);
         }
     }
 

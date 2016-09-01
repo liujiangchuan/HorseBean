@@ -5,4 +5,9 @@
     <string name="save">SAVE</string>
     <string name="ok">OK</string>
     <string name="cancel">CANCEL</string>
+    <string name="refresh">Refresh</string>
+    <string name="loading">Loading...</string>
+    <string name="success">Success</string>
+    <string name="failed">Failed</string>
+    <string name="empty">Empty</string>
 </resources>
