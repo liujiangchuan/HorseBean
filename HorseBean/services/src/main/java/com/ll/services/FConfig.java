@@ -19,4 +19,6 @@ public final class FConfig
     public static boolean STRICT_MODE = false;
     //leak canary
     public static boolean LEAK_CANARY = false;
+    //statistic by umeng
+    public static boolean STATISTIC = false;
 }

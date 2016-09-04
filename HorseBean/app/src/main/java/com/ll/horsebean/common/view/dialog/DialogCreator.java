@@ -3,7 +3,6 @@ package com.ll.horsebean.common.view.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
 
 /**
@@ -143,7 +142,7 @@ public class DialogCreator
                                                   DialogInterface.OnClickListener negBtnListener)
     {
         Dialog dialog;
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        CommonAlertDialog.Builder builder = new CommonAlertDialog.Builder(context);
         builder.setTitle(title);
         builder.setSingleChoiceItems(items, 0, itemListener);
         builder.setPositiveButton(posBtnName, posBtnListener);
@@ -211,9 +210,9 @@ public class DialogCreator
                                                  DialogInterface.OnClickListener negBtnListener)
     {
         Dialog dialog;
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        CommonAlertDialog.Builder builder = new CommonAlertDialog.Builder(context);
         builder.setTitle(title);
-        builder.setMultiChoiceItems(items, null, itemListener);
+        builder.setMultiChoiceItems(items, itemListener);
         builder.setPositiveButton(posBtnName, posBtnListener);
         builder.setNegativeButton(negBtnName, negBtnListener);
         dialog = builder.create();
@@ -264,7 +263,7 @@ public class DialogCreator
                                           DialogInterface.OnClickListener btnListener)
     {
         Dialog dialog;
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        CommonAlertDialog.Builder builder = new CommonAlertDialog.Builder(context);
         builder.setTitle(title);
         builder.setItems(items, itemListener);
         builder.setNegativeButton(btnName, btnListener);

@@ -3,10 +3,12 @@ package com.ll.horsebean.demo.http.activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.ll.horsebean.C;
 import com.ll.horsebean.R;
 import com.ll.horsebean.common.DemoBaseActivity;
 import com.ll.horsebean.demo.http.model.HttpModel;
 import com.ll.services.helper.FLog;
+import com.ll.services.helper.FStatisticAgent;
 import com.ll.services.view.titlebar.IFTitlebar;
 
 import butterknife.Bind;
@@ -76,5 +78,6 @@ public class HttpActivity extends DemoBaseActivity implements IHttpActivity
     @OnClick(R.id.btn_refresh) public void onClick()
     {
         reloadData();
+        FStatisticAgent.onEvent(C.statistic.DEMO_HTTP_REFRESH);
     }
 }

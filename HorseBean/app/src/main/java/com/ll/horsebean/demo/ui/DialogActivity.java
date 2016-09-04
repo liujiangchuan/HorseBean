@@ -2,14 +2,19 @@ package com.ll.horsebean.demo.ui;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.SparseArray;
 import android.view.View;
 
+import com.ll.horsebean.C;
 import com.ll.horsebean.R;
 import com.ll.horsebean.common.DemoBaseActivity;
 import com.ll.horsebean.common.view.dialog.DialogCreator;
-import com.ll.services.helper.FLog;
+import com.ll.services.helper.FStatisticAgent;
+import com.ll.services.tools.FToast;
 import com.ll.services.view.titlebar.IFTitlebar;
 
+import butterknife.BindString;
 import butterknife.OnClick;
 
 /**
@@ -18,6 +23,15 @@ import butterknife.OnClick;
  */
 public class DialogActivity extends DemoBaseActivity
 {
+    @BindString(R.string.ok) String mStrOk;
+    @BindString(R.string.cancel) String mStrCancel;
+
+    private String mTitle;
+    private String mMessage;
+    private String[] mItems;
+    private int mSingleChoiceIndex;
+    private SparseArray<String> mMultiChoiceItem;
+
     @Override protected int getLayoutResource()
     {
         return R.layout.activity_dialog;
@@ -30,7 +44,11 @@ public class DialogActivity extends DemoBaseActivity
 
     @Override protected void onInit(Bundle savedInstanceState)
     {
-
+        mTitle = "- Title -";
+        mMessage = "Message...";
+        mItems = new String[]{"Item0", "Item1", "Item2"};
+        mSingleChoiceIndex = 0;
+        mMultiChoiceItem = new SparseArray<>();
     }
 
     @Override protected void loadData()
@@ -43,98 +61,134 @@ public class DialogActivity extends DemoBaseActivity
         switch (view.getId())
         {
             case R.id.btn1:
-                DialogCreator.createMessageDialog(this, "title", "文字", "button",
+                DialogCreator.createMessageDialog(this, mTitle, mMessage, mStrOk,
                         new DialogInterface.OnClickListener()
                         {
                             @Override public void onClick(DialogInterface dialog, int which)
                             {
-                                FLog.i("click");
+                                FToast.showShort(mStrOk);
                                 dialog.dismiss();
                             }
                         }).show();
+                FStatisticAgent.onEvent(C.statistic.DEMO_DIALOG_MESSAGE);
                 break;
             case R.id.btn2:
-                DialogCreator.createConfirmDialog(this, "title", "message", "pos", "neg",
+                DialogCreator.createConfirmDialog(this, mTitle, mMessage, mStrOk, mStrCancel,
                         new DialogInterface.OnClickListener()
                         {
                             @Override public void onClick(DialogInterface dialog, int which)
                             {
-                                FLog.i("pos click");
+                                FToast.showShort(mStrOk);
                                 dialog.dismiss();
                             }
                         }, new DialogInterface.OnClickListener()
                         {
                             @Override public void onClick(DialogInterface dialog, int which)
                             {
-                                FLog.i("neg click");
+                                FToast.showShort(mStrCancel);
                                 dialog.dismiss();
                             }
                         }).show();
+                FStatisticAgent.onEvent(C.statistic.DEMO_DIALOG_CONFIRM);
                 break;
             case R.id.btn3:
-                DialogCreator.createSingleChoiceDialog(this, "title",
-                        new String[]{"item0", "item1", "item2"}, "pos", "neg",
+                mSingleChoiceIndex = 0;
+                DialogCreator.createSingleChoiceDialog(this, mTitle, mItems, mStrOk, mStrCancel,
                         new DialogInterface.OnClickListener()
                         {
                             @Override public void onClick(DialogInterface dialog, int which)
                             {
-                                FLog.i("item which: " + which);
+                                mSingleChoiceIndex = which;
+                            }
+                        }, new DialogInterface.OnClickListener()
+                        {
+                            @Override public void onClick(DialogInterface dialog, int which)
+                            {
+                                FToast.showShort("Single choice: " + mItems[mSingleChoiceIndex]);
                                 dialog.dismiss();
                             }
                         }, new DialogInterface.OnClickListener()
                         {
                             @Override public void onClick(DialogInterface dialog, int which)
                             {
-                                FLog.i("pos click");
-                                dialog.dismiss();
-                            }
-                        }, new DialogInterface.OnClickListener()
-                        {
-                            @Override public void onClick(DialogInterface dialog, int which)
-                            {
-                                FLog.i("neg click");
+                                FToast.showShort(R.string.cancel);
                                 dialog.dismiss();
                             }
                         }).show();
+                FStatisticAgent.onEvent(C.statistic.DEMO_DIALOG_SINGLE_CHOICE);
                 break;
             case R.id.btn4:
-                DialogCreator.createMultiChoiceDialog(this, "title",
-                        new String[]{"item0", "item1", "item2", "item3", "item4"}, "btn",
+                mMultiChoiceItem.clear();
+                DialogCreator.createMultiChoiceDialog(this, mTitle, mItems, mStrOk, mStrCancel,
                         new DialogInterface.OnMultiChoiceClickListener()
                         {
                             @Override public void onClick(DialogInterface dialog, int which,
                                                           boolean isChecked)
                             {
-                                FLog.i("item which: " + which + ", isChecked: " + isChecked);
+                                if (isChecked)
+                                {
+                                    mMultiChoiceItem.append(which, mItems[which]);
+                                }
+                                else
+                                {
+                                    mMultiChoiceItem.delete(which);
+                                }
+                            }
+                        }, new DialogInterface.OnClickListener()
+                        {
+                            @Override public void onClick(DialogInterface dialog, int which)
+                            {
+                                StringBuilder stringBuilder = new StringBuilder();
+                                int length = mItems.length;
+                                for (int i = 0; i < length; i++)
+                                {
+                                    String item = mMultiChoiceItem.get(i);
+                                    if (!TextUtils.isEmpty(item))
+                                    {
+                                        stringBuilder.append(item);
+                                        stringBuilder.append(",");
+                                    }
+                                }
+                                if (stringBuilder.length() > 0)
+                                {
+                                    FToast.showShort(
+                                            stringBuilder.deleteCharAt(stringBuilder.length() - 1)
+                                                    .toString());
+                                }
+                                else
+                                {
+                                    FToast.showShort("selected nothing!");
+                                }
                                 dialog.dismiss();
                             }
                         }, new DialogInterface.OnClickListener()
                         {
                             @Override public void onClick(DialogInterface dialog, int which)
                             {
-                                FLog.i("click");
+                                FToast.showShort(R.string.cancel);
                                 dialog.dismiss();
                             }
                         }).show();
-
+                FStatisticAgent.onEvent(C.statistic.DEMO_DIALOG_MULTI_CHOICE);
                 break;
             case R.id.btn5:
-                DialogCreator.createListDialog(this, new String[]{"item0,item1"}, "btn",
+                DialogCreator.createListDialog(this, mItems, mStrCancel,
                         new DialogInterface.OnClickListener()
                         {
                             @Override public void onClick(DialogInterface dialog, int which)
                             {
-                                FLog.i("item which: " + which);
+                                FToast.showShort("List select: " + mItems[which]);
                                 dialog.dismiss();
                             }
                         }, new DialogInterface.OnClickListener()
                         {
                             @Override public void onClick(DialogInterface dialog, int which)
                             {
-                                FLog.i("click");
+                                FToast.showShort(R.string.cancel);
                                 dialog.dismiss();
                             }
                         }).show();
+                FStatisticAgent.onEvent(C.statistic.DEMO_DIALOG_LIST);
                 break;
         }
     }

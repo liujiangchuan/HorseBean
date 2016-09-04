@@ -55,7 +55,8 @@ android {
                                     FLOG_OUT_TO_FILE_LEVEL: 5,
                                     CRASH_CATCH           : false,
                                     STRICT_MODE           : true,
-                                    LEAK_CANARY           : true]
+                                    LEAK_CANARY           : true,
+                                    STATISTIC             : true]
         }
         release {
             //not show log
@@ -77,7 +78,8 @@ android {
                                     FLOG_OUT_TO_FILE_LEVEL: 5,
                                     CRASH_CATCH           : false,
                                     STRICT_MODE           : false,
-                                    LEAK_CANARY           : false]
+                                    LEAK_CANARY           : false,
+                                    STATISTIC             : true]
         }
         applicationVariants.all { variant ->
             variant.outputs.each { output ->

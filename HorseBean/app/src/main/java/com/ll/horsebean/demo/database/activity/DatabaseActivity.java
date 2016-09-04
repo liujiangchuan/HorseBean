@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
+import com.ll.horsebean.C;
 import com.ll.horsebean.R;
 import com.ll.horsebean.common.DemoBaseActivity;
 import com.ll.horsebean.common.view.dialog.DialogCreator;
@@ -16,6 +17,7 @@ import com.ll.horsebean.db.baseAccess.BookDaoBase;
 import com.ll.horsebean.db.framework.Book;
 import com.ll.horsebean.demo.database.model.DatabaseDataAdapter;
 import com.ll.horsebean.demo.database.model.DatabaseModel;
+import com.ll.services.helper.FStatisticAgent;
 import com.ll.services.util.FTimeUtil;
 import com.ll.services.view.recyclerview.onFRecyclerItemTouchListener;
 import com.ll.services.view.titlebar.IFTitlebar;
@@ -74,6 +76,8 @@ public class DatabaseActivity extends DemoBaseActivity
                                                         .deleteByKey(book.getContent_id());
                                                 mDatabaseDataAdapter.removeItem(book);
                                                 mDeleteDialog.dismiss();
+                                                FStatisticAgent
+                                                        .onEvent(C.statistic.DEMO_DATABASE_DELETE);
                                             }
                                         }, new DialogInterface.OnClickListener()
                                         {
@@ -116,5 +120,6 @@ public class DatabaseActivity extends DemoBaseActivity
             mEtDatabaseInput.setText("");
             mDatabaseDataAdapter.proposeItem(book);
         }
+        FStatisticAgent.onEvent(C.statistic.DEMO_DATABASE_ADD);
     }
 }

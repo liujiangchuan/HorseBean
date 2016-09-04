@@ -33,14 +33,14 @@ public final class MyConfig
             FConfig.CRASH_CATCH = applicationInfo.metaData.getBoolean("CRASH_CATCH");
             FConfig.STRICT_MODE = applicationInfo.metaData.getBoolean("STRICT_MODE");
             FConfig.LEAK_CANARY = applicationInfo.metaData.getBoolean("LEAK_CANARY");
+            FConfig.STATISTIC = applicationInfo.metaData.getBoolean("STATISTIC");
 
             FLog.i("[CHANNEL]:" + CHANNEL + ", [FLOG_DEBUG]:" + FConfig.FLOG_DEBUG +
                     ", [FLOG_DEBUG_LEVEL]:" + FConfig.FLOG_DEBUG_LEVEL + ", [FLOG_OUT_TO_FILE]:" +
                     FConfig.FLOG_OUT_TO_FILE + ", [FLOG_OUT_TO_FILE_LEVEL]:" +
-                    FConfig.FLOG_OUT_TO_FILE_LEVEL +
-                    ", [CRASH_CATCH]:" + FConfig.CRASH_CATCH + ", [STRICT_MODE]:" +
-                    FConfig.STRICT_MODE +
-                    ", [LEAK_CANARY]:" + FConfig.LEAK_CANARY);
+                    FConfig.FLOG_OUT_TO_FILE_LEVEL + ", [CRASH_CATCH]:" + FConfig.CRASH_CATCH +
+                    ", [STRICT_MODE]:" + FConfig.STRICT_MODE + ", [LEAK_CANARY]:" +
+                    FConfig.LEAK_CANARY + ", [STATISTIC]:" + FConfig.STATISTIC);
         }
         catch (PackageManager.NameNotFoundException e)
         {

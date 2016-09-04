@@ -12,6 +12,7 @@ import android.view.Window;
 
 import com.ll.services.R;
 import com.ll.services.helper.FLog;
+import com.ll.services.helper.FStatisticAgent;
 import com.ll.services.helper.FStrictModeWrapper;
 import com.ll.services.view.dialog.FLoadingDialog;
 import com.ll.services.view.titlebar.FTitlebar;
@@ -53,12 +54,14 @@ public abstract class FBaseActivity extends FragmentActivity
     @Override protected void onResume()
     {
         super.onResume();
+        FStatisticAgent.onResume(this);
         FLog.i("onResume");
     }
 
     @Override protected void onPause()
     {
         super.onPause();
+        FStatisticAgent.onPause(this);
         FLog.i("onPause");
     }
 

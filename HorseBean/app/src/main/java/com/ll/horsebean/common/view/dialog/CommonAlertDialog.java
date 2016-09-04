@@ -3,6 +3,7 @@ package com.ll.horsebean.common.view.dialog;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -37,9 +38,19 @@ public class CommonAlertDialog extends AlertDialog
         private String mMessage;
         private String mEditHint;
         private View mView;
+        private String[] mItems;
+        private int mCheckedItem;
+        //type
+        private boolean mIsSingleChoice;
+        private boolean mIsMultiChoice;
+        private boolean mIsList;
+        //button
         private String mPositiveButtonText, mNegativeButtonText;
-        private DialogInterface.OnClickListener mPositiveButtonListener, mNegativeButtonListener;
+        //listener
+        private OnClickListener mPositiveButtonListener, mNegativeButtonListener;
         private OnEditClickListener mEditClickListener;
+        private OnClickListener mListClickListener;
+        private OnMultiChoiceClickListener mMultiChoiceClickListener;
 
         public Builder(Context context)
         {
@@ -67,6 +78,33 @@ public class CommonAlertDialog extends AlertDialog
         public Builder setView(View view)
         {
             mView = view;
+            return this;
+        }
+
+        public Builder setSingleChoiceItems(String[] items, int checkedItem,
+                                            final OnClickListener listener)
+        {
+            mItems = items;
+            mCheckedItem = checkedItem;
+            mListClickListener = listener;
+            mIsSingleChoice = true;
+            return this;
+        }
+
+        public Builder setMultiChoiceItems(String[] items,
+                                           final OnMultiChoiceClickListener listener)
+        {
+            mItems = items;
+            mMultiChoiceClickListener = listener;
+            mIsMultiChoice = true;
+            return this;
+        }
+
+        public Builder setItems(String[] items, final OnClickListener listener)
+        {
+            mItems = items;
+            mListClickListener = listener;
+            mIsList = true;
             return this;
         }
 
@@ -98,9 +136,39 @@ public class CommonAlertDialog extends AlertDialog
             //// TODO: 2016/8/10 build custom view. 
             View view = LayoutInflater.from(mContext).inflate(R.layout.dlg_alert_common, null);
             AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+            //title
             builder.setTitle(mTitle);
-            builder.setMessage(mMessage);
-            builder.setView(mView);
+            //content
+            if (TextUtils.isEmpty(mMessage))
+            {
+                if (mIsSingleChoice)
+                {
+                    builder.setSingleChoiceItems(mItems, mCheckedItem, mListClickListener);
+                }
+                else
+                {
+                    if (mIsMultiChoice)
+                    {
+                        builder.setMultiChoiceItems(mItems, null, mMultiChoiceClickListener);
+                    }
+                    else
+                    {
+                        if (mIsList)
+                        {
+                            builder.setItems(mItems, mListClickListener);
+                        }
+                        else
+                        {
+                            builder.setView(mView);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                builder.setMessage(mMessage);
+            }
+            //button
             builder.setPositiveButton(mPositiveButtonText, mPositiveButtonListener);
             builder.setNegativeButton(mNegativeButtonText, mNegativeButtonListener);
             return builder.create();

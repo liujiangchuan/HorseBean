@@ -107,3 +107,7 @@
 -keepclasseswithmembernames class * {
     @butterknife.* <methods>;
 }
+# Umeng
+-keepclassmembers class * {
+   public <init> (org.json.JSONObject);
+}
