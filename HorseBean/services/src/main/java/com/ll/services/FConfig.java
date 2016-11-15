@@ -21,4 +21,6 @@ public final class FConfig
     public static boolean LEAK_CANARY = false;
     //statistic by umeng
     public static boolean STATISTIC = false;
+    //sys trace
+    public static boolean SYS_TRACE = false;
 }

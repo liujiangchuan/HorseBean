@@ -60,6 +60,10 @@
             android:value="${STATISTIC}"/>
 
         <meta-data
+            android:name="SYS_TRACE"
+            android:value="${SYS_TRACE}"/>
+
+        <meta-data
             android:name="UMENG_APPKEY"
             android:value="57c8d97967e58e778c0013a7"/>
         <meta-data

@@ -34,6 +34,7 @@ public final class MyConfig
             FConfig.STRICT_MODE = applicationInfo.metaData.getBoolean("STRICT_MODE");
             FConfig.LEAK_CANARY = applicationInfo.metaData.getBoolean("LEAK_CANARY");
             FConfig.STATISTIC = applicationInfo.metaData.getBoolean("STATISTIC");
+            FConfig.SYS_TRACE = applicationInfo.metaData.getBoolean("SYS_TRACE");
 
             FLog.i("[CHANNEL]:" + CHANNEL + ", [FLOG_DEBUG]:" + FConfig.FLOG_DEBUG +
                     ", [FLOG_DEBUG_LEVEL]:" + FConfig.FLOG_DEBUG_LEVEL + ", [FLOG_OUT_TO_FILE]:" +

@@ -56,7 +56,8 @@ android {
                                     CRASH_CATCH           : false,
                                     STRICT_MODE           : true,
                                     LEAK_CANARY           : true,
-                                    STATISTIC             : true]
+                                    STATISTIC             : true,
+                                    SYS_TRACE             : true]
         }
         release {
             //not show log
@@ -79,7 +80,8 @@ android {
                                     CRASH_CATCH           : false,
                                     STRICT_MODE           : false,
                                     LEAK_CANARY           : false,
-                                    STATISTIC             : true]
+                                    STATISTIC             : true,
+                                    SYS_TRACE             : false]
         }
         applicationVariants.all { variant ->
             variant.outputs.each { output ->
