@@ -32,7 +32,7 @@ android {
             keyAlias 'keyStore'
             keyPassword '123456'
         }
-        relealse {
+        release {
             storeFile file('D:/Doc/package/asKeyStore/keyStore.jks')
             storePassword properties.getProperty("KEY_PASSWORD")
             keyAlias properties.getProperty("KEY_ALIAS")
@@ -71,7 +71,7 @@ android {
             // load default confusion file progudard-android.txt is in sdk path, proguard.cfg is our own confusion file.
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             //sign
-            signingConfig signingConfigs.relealse
+            signingConfig signingConfigs.release
 
             manifestPlaceholders = [FLOG_DEBUG            : false,
                                     FLOG_DEBUG_LEVEL      : 2,
