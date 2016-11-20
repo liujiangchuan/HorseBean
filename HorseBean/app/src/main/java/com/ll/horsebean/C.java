@@ -33,6 +33,20 @@ public final class C
         public static final String DEMO_DIALOG_LIST = "demo_dialog_list";
     }
 
+    public static final class rxevent
+    {
+        public static final class id
+        {
+            public static final int ID_TEST = 100;
+        }
+
+        public static final class name
+        {
+            public static final String NAME_TEST_1 = "test1";
+            public static final String NAME_TEST_2 = "test2";
+        }
+    }
+
     public static final class test
     {
         public static final int RED = 0;
