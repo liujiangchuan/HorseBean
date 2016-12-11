@@ -31,7 +31,8 @@ public class MainModel
     {
         return Observable.fromCallable(new Callable<List<ActivityBean>>()
         {
-            @Override public List<ActivityBean> call() throws Exception
+            @Override
+            public List<ActivityBean> call() throws Exception
             {
                 initList();
                 PackageInfo packageInfo = findPackage();

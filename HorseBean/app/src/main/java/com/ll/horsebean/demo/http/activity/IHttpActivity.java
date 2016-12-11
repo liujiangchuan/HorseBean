@@ -1,18 +1,15 @@
 package com.ll.horsebean.demo.http.activity;
 
+import com.ll.horsebean.common.IDemoBaseActivity;
+import com.ll.horsebean.http.bean.MovieBean;
+
 /**
  * Created by Liujc on 2016/5/26.
  * Email liujiangchuan@hotmail.com
  */
-public interface IHttpActivity
+public interface IHttpActivity extends IDemoBaseActivity
 {
-    void onHttpPreExecute();
+    void onMoviesDataRefresh(MovieBean bean);
 
-    void onHttpSuccessData(String data);
-
-    void onHttpSuccessEmpty();
-
-    void onHttpFailed();
-
-    void onHttpAfterExecute();
+    void onMoviesDataFailed();
 }

@@ -2,5 +2,5 @@
 <resources>
 
     <string name="hello_world">Hello world!</string>
-
+    <string name="http_return_error">HTTP RETURN ERROR!</string>
 </resources>

@@ -7,11 +7,11 @@ package com.ll.services.tools.rxbus;
 public class RxEventBean
 {
     public int id;
-    public String name;
+    public Object data;
 
-    public RxEventBean(int id, String name)
+    public RxEventBean(int id, Object data)
     {
         this.id = id;
-        this.name = name;
+        this.data = data;
     }
 }

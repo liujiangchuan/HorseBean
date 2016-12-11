@@ -35,16 +35,7 @@ public final class C
 
     public static final class rxevent
     {
-        public static final class id
-        {
-            public static final int ID_TEST = 100;
-        }
-
-        public static final class name
-        {
-            public static final String NAME_TEST_1 = "test1";
-            public static final String NAME_TEST_2 = "test2";
-        }
+        public static final int ID_ACTIVITY_COUNT = 100;
     }
 
     public static final class test
@@ -57,5 +48,16 @@ public final class C
     @IntDef({test.RED, test.GREEN, test.YELLOW}) @Retention(RetentionPolicy.SOURCE)
     public @interface TestColors
     {
+    }
+
+    public static final class http
+    {
+        //host
+        public static final String FORMAL_HOST = "https://api.douban.com/v2/movie/";
+        public static final String TEST_HOST = "https://api.douban.com/v2/movie/test/";
+        //status result code
+        public static final int STATUS_OK = 200;
+        public static final int STATUS_ERROR = -1;
+        public static final int STATUS_EXCEPTION = -200;
     }
 }

@@ -4,6 +4,11 @@ package com.ll.services.util;
  * Created by Liujc on 2016/5/13.
  * Email liujiangchuan@hotmail.com
  */
+
+/**
+ * Deprecated: RxView can replace this.
+ */
+@Deprecated
 public class FNoDoubleClickUtils
 {
     private static long sLastClickTime;
