@@ -2,6 +2,7 @@ package com.ll.horsebean;
 
 import android.os.AsyncTask;
 
+import com.ll.horsebean.common.InitializeService;
 import com.ll.services.FApplication;
 import com.ll.services.FC;
 import com.ll.services.helper.FCrashHandler;
@@ -25,17 +26,20 @@ public class MyApp extends FApplication
         return instance;
     }
 
-    @Override public void onCreate()
+    @Override
+    public void onCreate()
     {
         super.onCreate();
         instance = this;
 
         new AppInitTask().execute();
+        InitializeService.start(this);
     }
 
     private class AppInitTask extends AsyncTask<String, Integer, Integer>
     {
-        @Override protected Integer doInBackground(String... params)
+        @Override
+        protected Integer doInBackground(String... params)
         {
             initMainProcess();
             return null;
@@ -51,8 +55,8 @@ public class MyApp extends FApplication
             //first start
             if (FAppUtil.isFirstStartApp())
             {
-                FSharedPreference.getInstance()
-                        .putString(FC.fSharedPreference.F_CLIENT_VERSION, FAppUtil.getVersionName());
+                FSharedPreference.getInstance().putString(FC.fSharedPreference.F_CLIENT_VERSION,
+                        FAppUtil.getVersionName());
             }
             FLog.i("AppInitTask end.");
         }
