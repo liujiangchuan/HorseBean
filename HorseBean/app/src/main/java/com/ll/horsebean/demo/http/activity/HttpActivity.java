@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.jakewharton.rxbinding.view.RxView;
+import com.jakewharton.rxbinding3.view.RxView;
 import com.ll.horsebean.C;
 import com.ll.horsebean.R;
 import com.ll.horsebean.common.DemoBaseActivity;
@@ -17,7 +17,9 @@ import com.ll.services.view.titlebar.IFTitlebar;
 
 import java.util.concurrent.TimeUnit;
 
-import butterknife.Bind;
+import butterknife.BindView;
+import io.reactivex.functions.Consumer;
+import kotlin.Unit;
 import rx.functions.Action1;
 
 /**
@@ -27,8 +29,8 @@ import rx.functions.Action1;
 public class HttpActivity extends DemoBaseActivity
 {
     //view
-    @Bind(R.id.btn_refresh) Button mBtnRefresh;
-    @Bind(R.id.tv_status) TextView mTvStatus;
+    @BindView(R.id.btn_refresh) Button mBtnRefresh;
+    @BindView(R.id.tv_status) TextView mTvStatus;
     //presenter
     private HttpPresenter mHttpPresenter;
 
@@ -89,15 +91,13 @@ public class HttpActivity extends DemoBaseActivity
                 dismissLoadingDialog();
             }
         });
-        RxView.clicks(mBtnRefresh).throttleFirst(2, TimeUnit.SECONDS).subscribe(new Action1<Void>()
-        {
+        RxView.clicks(mBtnRefresh).throttleFirst(2, TimeUnit.SECONDS).subscribe(new Consumer<Unit>() {
             @Override
-            public void call(Void aVoid)
-            {
+            public void accept(Unit unit) throws Exception {
                 reloadData();
                 FStatisticAgent.onEvent(C.statistic.DEMO_HTTP_REFRESH);
             }
-        });
+        }).dispose();
     }
 
     @Override

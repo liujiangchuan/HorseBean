@@ -72,7 +72,7 @@ public class MainPresenter
                                 else
                                 {
                                     mIMainActivity.onActivitySuccessData(list);
-                                    //// TODO: 2016/12/11 This is only to show how RxBus works. 
+                                    //// TODO: 2016/12/11 This is only to show how RxBus works.
                                     RxBus.getInstance()
                                             .post(new RxEventBean(C.rxevent.ID_ACTIVITY_COUNT,
                                                     list.size()));

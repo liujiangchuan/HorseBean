@@ -12,6 +12,7 @@ import com.ll.horsebean.common.DemoBaseActivity;
 import com.ll.horsebean.demo.main.model.MainAdapter;
 import com.ll.horsebean.demo.main.model.bean.ActivityBean;
 import com.ll.horsebean.demo.main.presenter.MainPresenter;
+import com.ll.services.FApplication;
 import com.ll.services.tools.FToast;
 import com.ll.services.view.layoutloader.FLodingRelativeLayout;
 import com.ll.services.view.layoutloader.onFLayoutLoaderClickListener;
@@ -19,7 +20,7 @@ import com.ll.services.view.titlebar.IFTitlebar;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * Created by Liujc on 2016/8/17.
@@ -28,8 +29,8 @@ import butterknife.Bind;
 public class MainActivity extends DemoBaseActivity
 {
     //view
-    @Bind(R.id.lv_activities) ListView mLvActivities;
-    @Bind(R.id.rl_parent_layout) FLodingRelativeLayout mRlParentLayout;
+    @BindView(R.id.lv_activities) ListView mLvActivities;
+    @BindView(R.id.rl_parent_layout) FLodingRelativeLayout mRlParentLayout;
     //presenter
     private MainPresenter mPresenter;
     //

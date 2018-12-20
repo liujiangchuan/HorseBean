@@ -14,7 +14,7 @@ import com.ll.services.tools.FToast;
 import com.ll.services.view.recyclerview.onFRecyclerItemTouchListener;
 import com.ll.services.view.titlebar.IFTitlebar;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * Created by Liujc on 2016/7/25.
@@ -23,7 +23,7 @@ import butterknife.Bind;
 public class RecyclerViewActivity extends DemoBaseActivity
 {
     //view
-    @Bind(R.id.rv_view) RecyclerView mRvView;
+    @BindView(R.id.rv_view) RecyclerView mRvView;
     //model
     private RecyclerViewModel mModel;
     //adapter

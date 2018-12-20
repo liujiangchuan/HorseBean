@@ -1,13 +1,15 @@
 package com.ll.services.imageload;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.support.annotation.NonNull;
 
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
+
+import java.security.MessageDigest;
 
 /**
  * Created by Liujc on 2016/4/25.
@@ -15,11 +17,6 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
  */
 public class FGlideCircleTransform extends BitmapTransformation
 {
-    public FGlideCircleTransform(Context context)
-    {
-        super(context);
-    }
-
     @Override
     protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight)
     {
@@ -55,8 +52,13 @@ public class FGlideCircleTransform extends BitmapTransformation
         return result;
     }
 
-    @Override public String getId()
-    {
-        return getClass().getName();
+//    @Override public String getId()
+//    {
+//        return getClass().getName();
+//    }
+
+    @Override
+    public void updateDiskCacheKey(@NonNull MessageDigest messageDigest) {
+
     }
 }

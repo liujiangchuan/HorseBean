@@ -8,7 +8,7 @@ import com.ll.horsebean.common.DemoBaseActivity;
 import com.ll.services.imageload.FImageLoader;
 import com.ll.services.view.titlebar.IFTitlebar;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * Created by Liujc on 2016/8/17.
@@ -16,11 +16,11 @@ import butterknife.Bind;
  */
 public class GlideActivity extends DemoBaseActivity
 {
-    @Bind(R.id.iv_glide_center) ImageView mIvGlideCenter;
-    @Bind(R.id.iv_glide_top) ImageView mIvGlideTop;
-    @Bind(R.id.iv_glide_left) ImageView mIvGlideLeft;
-    @Bind(R.id.iv_glide_bottom) ImageView mIvGlideBottom;
-    @Bind(R.id.iv_glide_right) ImageView mIvGlideRight;
+    @BindView(R.id.iv_glide_center) ImageView mIvGlideCenter;
+    @BindView(R.id.iv_glide_top) ImageView mIvGlideTop;
+    @BindView(R.id.iv_glide_left) ImageView mIvGlideLeft;
+    @BindView(R.id.iv_glide_bottom) ImageView mIvGlideBottom;
+    @BindView(R.id.iv_glide_right) ImageView mIvGlideRight;
 
     @Override protected int getLayoutResource()
     {
@@ -29,7 +29,7 @@ public class GlideActivity extends DemoBaseActivity
 
     @Override protected void initTitlebar(IFTitlebar titlebar)
     {
-        titlebar.setTitleText(getClass().getName());
+        titlebar.setTitleText(""/*getClass().getName()*/);
     }
 
     @Override protected void onInit(Bundle savedInstanceState)

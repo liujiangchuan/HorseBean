@@ -2,28 +2,32 @@ apply plugin: 'com.android.application'
 
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
+project.ext {
+    supportLibraryVersion = "27.1.1"
+}
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 27
 
     defaultConfig {
         applicationId "com.ll.horsebean"
         minSdkVersion 14
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 27
+        versionCode 2
+        versionName "2.0"
+
+        manifestPlaceholders = [CHANNEL: properties.getProperty("CHANNEL_BYDEFAULT")]
     }
 
-    productFlavors {
-        bydefault {
-            manifestPlaceholders = [CHANNEL: properties.getProperty("CHANNEL_BYDEFAULT")]
-        }
-        baidu {
-            manifestPlaceholders = [CHANNEL: properties.getProperty("CHANNEL_BAIDU")]
-            applicationId "com.example.administrator.myapplication5"
-        }
-    }
+//    productFlavors {
+//        bydefault {
+//            manifestPlaceholders = [CHANNEL: properties.getProperty("CHANNEL_BYDEFAULT")]
+//        }
+//        baidu {
+//            manifestPlaceholders = [CHANNEL: properties.getProperty("CHANNEL_BAIDU")]
+//            applicationId "com.example.administrator.myapplication5"
+//        }
+//    }
 
     signingConfigs {
         debug {
@@ -33,7 +37,7 @@ android {
             keyPassword '123456'
         }
         release {
-            storeFile file('D:/Doc/package/asKeyStore/keyStore.jks')
+            storeFile file(properties.getProperty("KEYSTORE_PATH"))
             storePassword properties.getProperty("KEY_PASSWORD")
             keyAlias properties.getProperty("KEY_ALIAS")
             keyPassword properties.getProperty("KEY_PASSWORD")
@@ -83,30 +87,53 @@ android {
                                     STATISTIC             : true,
                                     SYS_TRACE             : false]
         }
-        applicationVariants.all { variant ->
-            variant.outputs.each { output ->
-                def outputFile = output.outputFile
-                if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                    def fileName = "horsebean_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
-                    output.outputFile = new File(outputFile.parent, fileName)
-                }
-            }
-        }
+//        applicationVariants.all { variant ->
+//            variant.outputs.each { output ->
+//                def outputFile = output.outputFile
+//                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+//                    def fileName = "horsebean_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+//                    output.outputFile = new File(outputFile.parent, fileName)
+//                }
+//            }
+//        }
     }
 
     dexOptions { javaMaxHeapSize "4g" }
 
     lintOptions { abortOnError false }
 
-    repositories {
-        flatDir {
-            dirs '../services/libs'
-        }
-    }
+//    repositories {
+//        flatDir {
+//            dirs '../services/libs'
+//        }
+//    }
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-//    testCompile 'junit:junit:4.12'
-    compile project(':services')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //    testCompile 'junit:junit:4.12'
+    implementation project(':services')
+    implementation "com.android.support:appcompat-v7:$project.supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$project.supportLibraryVersion"
+    implementation "com.android.support:support-compat:$project.supportLibraryVersion"
+    implementation "com.android.support:support-annotations:$project.supportLibraryVersion"
+    implementation 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor "com.jakewharton:butterknife-compiler:8.5.1"
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.5.0'
+    implementation 'com.squareup.leakcanary:leakcanary-watcher:1.6.2'
+    implementation 'com.squareup.leakcanary:leakcanary-analyzer:1.6.2'
+    implementation 'com.squareup.leakcanary:leakcanary-android:1.6.2'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+    implementation 'com.squareup.okio:okio:2.1.0'
+    implementation 'com.squareup.haha:haha:2.0.4'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.4'
+    implementation 'com.umeng.analytics:analytics:6.1.4'
+    implementation 'com.umeng.sdk:utdid:1.1.5.3'
+    implementation 'com.jakewharton.rxbinding3:rxbinding:3.0.0-alpha2'
+    implementation 'io.reactivex:rxandroid:1.2.1'
 }

@@ -7,9 +7,12 @@ import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.support.annotation.NonNull;
 
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
+
+import java.security.MessageDigest;
 
 /**
  * Created by Liujc on 2016/4/25.
@@ -21,9 +24,8 @@ public class FGlideRoundRectTransform extends BitmapTransformation
 
     public FGlideRoundRectTransform(Context context, int dp)
     {
-        super(context);
-        this.rx = Resources.getSystem().getDisplayMetrics().density * dp;
-        this.ry = Resources.getSystem().getDisplayMetrics().density * dp;
+        rx = Resources.getSystem().getDisplayMetrics().density * dp;
+        ry = Resources.getSystem().getDisplayMetrics().density * dp;
     }
 
     /**
@@ -34,9 +36,8 @@ public class FGlideRoundRectTransform extends BitmapTransformation
      */
     public FGlideRoundRectTransform(Context context, int radius_x, int radius_y)
     {
-        super(context);
-        this.rx = Resources.getSystem().getDisplayMetrics().density * radius_x;
-        this.ry = Resources.getSystem().getDisplayMetrics().density * radius_y;
+        rx = Resources.getSystem().getDisplayMetrics().density * radius_x;
+        ry = Resources.getSystem().getDisplayMetrics().density * radius_y;
 
     }
 
@@ -70,9 +71,11 @@ public class FGlideRoundRectTransform extends BitmapTransformation
         return result;
     }
 
-
-    @Override public String getId()
-    {
-        return getClass().getName() + Math.round(rx) + Math.round(ry);
+    @Override
+    public void updateDiskCacheKey(@NonNull MessageDigest messageDigest) {
+//        @Override public String getId()
+//        {
+//            return getClass().getName() + Math.round(rx) + Math.round(ry);
+//        }
     }
 }

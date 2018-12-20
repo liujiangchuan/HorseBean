@@ -22,7 +22,7 @@ import com.ll.services.util.FTimeUtil;
 import com.ll.services.view.recyclerview.onFRecyclerItemTouchListener;
 import com.ll.services.view.titlebar.IFTitlebar;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -32,8 +32,9 @@ import butterknife.OnClick;
 public class DatabaseActivity extends DemoBaseActivity
 {
     //view
-    @Bind(R.id.et_database_input) EditText mEtDatabaseInput;
-    @Bind(R.id.rv_database_data) RecyclerView mRvDatabaseData;
+    @BindView(R.id.et_database_input) EditText mEtDatabaseInput;
+    @BindView(R.id.rv_database_data)
+    RecyclerView mRvDatabaseData;
 
     private Dialog mDeleteDialog;
     //model

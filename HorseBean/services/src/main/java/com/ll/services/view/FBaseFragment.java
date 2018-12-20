@@ -81,7 +81,7 @@ public abstract class FBaseFragment extends Fragment
     @Override public void onDestroyView()
     {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+//        ButterKnife.unbind(this);
         FLog.i("onDestroyView");
     }
 

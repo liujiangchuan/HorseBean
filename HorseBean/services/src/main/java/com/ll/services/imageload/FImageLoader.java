@@ -41,8 +41,8 @@ public class FImageLoader
 
     public void loadImage(Context context, String url, ImageView imageView)
     {
-        Glide.with(context).load(url).placeholder(R.drawable.default_img)
-                .error(R.drawable.default_img).crossFade().into(imageView);
+        Glide.with(context).load(url)/*.placeholder(R.drawable.default_img)
+                .error(R.drawable.default_img).crossFade()*/.into(imageView);
         FLog.i("Context=" + context.getClass().getName() + ", Url=" + url + ", ImageView=" +
                 imageView.toString());
     }
@@ -67,8 +67,8 @@ public class FImageLoader
     public void loadResImage(Context context, int resId, ImageView imageView)
     {
         Uri uri = resourceIdToUri(context, resId);
-        Glide.with(context).load(uri).placeholder(R.drawable.default_img)
-                .error(R.drawable.default_img).crossFade().into(imageView);
+        Glide.with(context).load(uri)/*.placeholder(R.drawable.default_img)
+                .error(R.drawable.default_img).crossFade()*/.into(imageView);
         FLog.i("Context=" + context.getClass().getName() + ", Uri=" + uri + ", ImageView=" +
                 imageView.toString());
     }
@@ -80,8 +80,8 @@ public class FImageLoader
 
     public void loadLocalImage(Context context, String path, ImageView imageView)
     {
-        Glide.with(context).load("file://" + path).placeholder(R.drawable.default_img)
-                .error(R.drawable.default_img).crossFade().into(imageView);
+        Glide.with(context).load("file://" + path)/*.placeholder(R.drawable.default_img)
+                .error(R.drawable.default_img).crossFade()*/.into(imageView);
         FLog.i("Context=" + context.getClass().getName() + ", Path=" + path + ", ImageView=" +
                 imageView.toString());
     }
@@ -93,9 +93,9 @@ public class FImageLoader
 
     public void loadCircleImage(Context context, String url, ImageView imageView)
     {
-        Glide.with(context).load(url).placeholder(R.drawable.default_img)
+        Glide.with(context).load(url)/*.placeholder(R.drawable.default_img)
                 .error(R.drawable.default_img).crossFade()
-                .transform(new FGlideCircleTransform(context)).into(imageView);
+                .transform(new FGlideCircleTransform(context))*/.into(imageView);
         FLog.i("Context=" + context.getClass().getName() + ", Url=" + url + ", ImageView=" +
                 imageView.toString());
     }
@@ -108,9 +108,9 @@ public class FImageLoader
     public void loadCircleResImage(Context context, int resId, ImageView imageView)
     {
         Uri uri = resourceIdToUri(context, resId);
-        Glide.with(context).load(uri).placeholder(R.drawable.default_img)
+        Glide.with(context).load(uri)/*.placeholder(R.drawable.default_img)
                 .error(R.drawable.default_img).crossFade()
-                .transform(new FGlideCircleTransform(context)).into(imageView);
+                .transform(new FGlideCircleTransform(context))*/.into(imageView);
         FLog.i("Context=" + context.getClass().getName() + ", Uri=" + uri + ", ImageView=" +
                 imageView.toString());
     }
@@ -122,9 +122,9 @@ public class FImageLoader
 
     public void loadCircleLocalImage(Context context, String path, ImageView imageView)
     {
-        Glide.with(context).load("file://" + path).placeholder(R.drawable.default_img)
+        Glide.with(context).load("file://" + path)/*.placeholder(R.drawable.default_img)
                 .error(R.drawable.default_img).crossFade()
-                .transform(new FGlideCircleTransform(context)).into(imageView);
+                .transform(new FGlideCircleTransform(context))*/.into(imageView);
         FLog.i("Context=" + context.getClass().getName() + ", Path=" + path + ", ImageView=" +
                 imageView.toString());
     }
@@ -136,9 +136,9 @@ public class FImageLoader
 
     public void loadRoundRectImage(Context context, String url, ImageView imageView, int radius)
     {
-        Glide.with(context).load(url).placeholder(R.drawable.default_img)
+        Glide.with(context).load(url)/*.placeholder(R.drawable.default_img)
                 .error(R.drawable.default_img).crossFade()
-                .transform(new FGlideRoundRectTransform(context, radius)).into(imageView);
+                .transform(new FGlideRoundRectTransform(context, radius))*/.into(imageView);
         FLog.i("Context=" + context.getClass().getName() + ", Url=" + url + ", ImageView=" +
                 imageView.toString());
     }
@@ -151,9 +151,9 @@ public class FImageLoader
     public void loadRoundRectResImage(Context context, int resId, ImageView imageView, int radius)
     {
         Uri uri = resourceIdToUri(context, resId);
-        Glide.with(context).load(uri).placeholder(R.drawable.default_img)
+        Glide.with(context).load(uri)/*.placeholder(R.drawable.default_img)
                 .error(R.drawable.default_img).crossFade()
-                .transform(new FGlideRoundRectTransform(context, radius)).into(imageView);
+                .transform(new FGlideRoundRectTransform(context, radius))*/.into(imageView);
         FLog.i("Context=" + context.getClass().getName() + ", Uri=" + uri + ", ImageView=" +
                 imageView.toString());
     }
@@ -166,9 +166,9 @@ public class FImageLoader
     public void loadRoundRectLocalImage(Context context, String path, ImageView imageView,
                                         int radius)
     {
-        Glide.with(context).load("file://" + path).placeholder(R.drawable.default_img)
+        Glide.with(context).load("file://" + path)/*.placeholder(R.drawable.default_img)
                 .error(R.drawable.default_img).crossFade()
-                .transform(new FGlideRoundRectTransform(context, radius)).into(imageView);
+                .transform(new FGlideRoundRectTransform(context, radius))*/.into(imageView);
         FLog.i("Context=" + context.getClass().getName() + ", Path=" + path + ", ImageView=" +
                 imageView.toString());
     }
@@ -181,8 +181,8 @@ public class FImageLoader
     public void loadResGif(Context context, int resId, ImageView imageView)
     {
         Uri uri = resourceIdToUri(context, resId);
-        Glide.with(context).load(uri).asGif().diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                .placeholder(R.drawable.default_img).error(R.drawable.default_img).into(imageView);
+        Glide.with(context).load(uri)/*.asGif().diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .placeholder(R.drawable.default_img).error(R.drawable.default_img)*/.into(imageView);
         FLog.i("Context=" + context.getClass().getName() + ", Uri=" + uri + ", ImageView=" +
                 imageView.toString());
     }

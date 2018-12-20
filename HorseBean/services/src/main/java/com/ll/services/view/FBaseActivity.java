@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -25,7 +26,7 @@ import butterknife.ButterKnife;
  * Created by Liujc on 2016/4/25.
  * Email liujiangchuan@hotmail.com
  */
-public abstract class FBaseActivity extends FragmentActivity
+public abstract class FBaseActivity extends AppCompatActivity
 {
     public static Handler sUIHandler = new Handler(Looper.getMainLooper());
     private IFTitlebar mIFTitlebar;
@@ -74,7 +75,7 @@ public abstract class FBaseActivity extends FragmentActivity
     @Override protected void onDestroy()
     {
         super.onDestroy();
-        ButterKnife.unbind(this);
+//        ButterKnife.unbind(this);
         FLog.i("onDestroy");
     }
 
@@ -85,7 +86,7 @@ public abstract class FBaseActivity extends FragmentActivity
      */
     protected boolean isShowTitle()
     {
-        return true;
+        return false;
     }
 
     /**
